@@ -4,7 +4,7 @@
  * @Author: sueRimn
  * @Date: 2019-09-23 15:02:34
  * @LastEditors: sueRimn
- * @LastEditTime: 2019-09-23 19:06:30
+ * @LastEditTime: 2019-09-23 19:29:57
  -->
 <template>
   <div class="loginBox">
@@ -47,7 +47,7 @@ export default {
         };
         await this.$store.dispatch("login/logintest", params);
         alert(this.msg);
-        if (this.msg === "登陆成功") {
+        if (this.msg === "登录成功") {
           this.$router.push("/home");
         } else {
           return;
@@ -66,7 +66,7 @@ export default {
     }
   },
   mounted() {
-    this.getSessionKey();
+    //  this.getSessionKey();
   }
 };
 </script>
