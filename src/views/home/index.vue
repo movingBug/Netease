@@ -8,10 +8,10 @@
         <router-link to="/home/first" tag="span">首页</router-link>
       </div>
       <div class="foot-item">
-        <router-link to="/home/special"  tag="span">专题</router-link>
+        <router-link to="/home/special" tag="span">专题</router-link>
       </div>
       <div class="foot-item">
-        <router-link to="/home/classify"  tag="span">分类</router-link>
+        <router-link to="/home/classify" tag="span">分类</router-link>
       </div>
       <div class="foot-item">
         <router-link to="/home/shop" tag="span">购物车</router-link>
@@ -24,14 +24,19 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
+import Vue from 'vue'
 
 export default Vue.extend({
-  name: "home",
-  components: {}
-});
+  name: 'home',
+  components: {},
+  methods: {
+
+  }
+  
+})
 </script>
 <style lang="scss">
+// @import '../assets/font/iconfont.css';
 
 html,body{
    width: 100%;
@@ -47,7 +52,7 @@ html,body{
 
 .homeMain {
   flex: 1;
-  overflow:auto; 
+  overflow:auto
 }
 
 .homeFoot {
@@ -65,6 +70,4 @@ html,body{
   text-align: center;
   line-height: 0.5rem;
 }
-
-
 </style>
