@@ -4,7 +4,7 @@
  * @Author: sueRimn
  * @Date: 2019-09-23 15:02:34
  * @LastEditors: sueRimn
- * @LastEditTime: 2019-09-23 19:29:57
+ * @LastEditTime: 2019-09-23 19:30:53
  -->
 <template>
   <div class="loginBox">
@@ -66,7 +66,7 @@ export default {
     }
   },
   mounted() {
-    //  this.getSessionKey();
+      this.getSessionKey();
   }
 };
 </script>
