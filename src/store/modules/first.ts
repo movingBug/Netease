@@ -1,4 +1,4 @@
-import request from '../../utils/request'
+import { getData } from "../../services/index"
 
 let state = {
   banner: [],
@@ -12,25 +12,27 @@ let state = {
 
 let mutations = {
   firstData (state:any,payload:any) {
-      console.log('payload',payload)
       state.banner = payload.banner
       state.brandList = payload.brandList
       state.categoryList = payload.categoryList
+      state.channel = payload.channel
       state.hotGoodsList = payload.hotGoodsList
       state.newGoodsList = payload.newGoodsList
       state.topicList = payload.topicList
-      state.banner = payload.banner
   }
 } 
 
 let actions = {
   getData ({ commit }: any, payload: any) {
     return new Promise((resolve, reject) => {
-      request.get('/').then(res => {
-        console.log('res---', res)
-        commit('firstData',res.data)
-        resolve()
-      })
+      setTimeout(() => {
+        getData().then((res:any) => {
+          console.log("res-----", res.data)
+          commit("firstData", res.data)
+          resolve()
+        })
+      }, 1000);
+      
     })
   }
 }

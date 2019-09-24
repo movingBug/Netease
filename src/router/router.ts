@@ -5,6 +5,7 @@ Vue.use(Router)
 
 export default new Router({
   mode: 'history',
+  linkActiveClass:'active',
   base: process.env.BASE_URL,
   routes: [
     {
@@ -17,6 +18,10 @@ export default new Router({
       name: 'home',
       component: () => import('../views/home/index.vue'),
       children: [
+        {
+           path:"/home",
+           redirect:"/home/first"
+        },
         {
           path: '/home/first',
           name: 'first',

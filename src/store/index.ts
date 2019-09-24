@@ -8,7 +8,7 @@
  */
 import Vue from 'vue'
 import Vuex from 'vuex';
-import login from './login';
+import login from './modules/login';
 import Logger from 'vuex/dist/logger'
 
 import First from './modules/first'

@@ -6,7 +6,7 @@
  * @LastEditors: sueRimn
  * @LastEditTime: 2019-09-23 17:22:36
  */
-import { login } from '../services';
+import { login } from '../../services';
 export default {
     namespaced: true,
     state: {
