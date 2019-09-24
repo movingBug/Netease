@@ -9,7 +9,7 @@ import axios from 'axios';
 import { AxiosResponse } from 'axios/index';
 
 const instance = axios.create({
-    baseURL:'http://127.0.0.1:8888',
+    baseURL: 'http://127.0.0.1:8888',
     timeout: 1000,
 })
 
