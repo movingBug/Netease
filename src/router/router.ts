@@ -1,3 +1,11 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: sueRimn
+ * @Date: 2019-09-23 15:02:34
+ * @LastEditors: sueRimn
+ * @LastEditTime: 2019-09-24 11:26:19
+ */
 import Vue from 'vue'
 import Router from 'vue-router'
 
@@ -11,6 +19,21 @@ export default new Router({
       path: '/',
       name: 'login',
       component: () => import('../views/login/index.vue')
+    },
+    {
+      path: '/location',
+      name: 'location',
+      component: () => import('../views/home/my/location/index.vue')
+    },
+    {
+      path: '/addLocation',
+      name: 'addLocation',
+      component: () => import('../views/home/my/addLocation/index.vue')
+    },
+    {
+      path: '/star',
+      name: 'star',
+      component: () => import('../views/home/my/star/index.vue')
     },
     {
       path: '/home',
@@ -41,7 +64,7 @@ export default new Router({
           path: '/home/my',
           name: 'my',
           component: () => import('../views/home/my/index.vue')
-        }
+        },
       ]
     }
   ]

@@ -4,8 +4,9 @@
  * @Author: sueRimn
  * @Date: 2019-09-23 15:02:34
  * @LastEditors: sueRimn
- * @LastEditTime: 2019-09-24 07:55:41
+ * @LastEditTime: 2019-09-24 10:24:17
  -->
+
 <template>
   <div class="minePage">
     <div class="userMessage">
@@ -16,20 +17,28 @@
       </div>
     </div>
     <div class="userlist">
-      <div v-for="(item,index) in mineList" :key="index" class="listItem">
+      <div
+        v-for="(item,index) in mineList"
+        :key="index"
+        class="listItem"
+        @click="clickItem(item.name)"
+      >
         <img :src="item.icon" v-if="!item.isClick" class="imgitem" />
         <img :src="item.icon" v-else class="action" />
         <div v-if="!item.isClick" class="listText">{{item.name}}</div>
         <div v-else class="actionText">{{item.name}}</div>
       </div>
     </div>
-    <p class="btnbox">
-      退出登录
-    </p>
+    <p class="btnbox">退出登录</p>
+    <div class="mask" v-if="isShow">
+      <Content />
+    </div>
+    <div v-else></div>
   </div>
 </template>
 
 <script lang="ts">
+import Content from './Notunlock/index';
 import Vue from "vue";
 import { mapState } from "vuex";
 
@@ -98,15 +107,35 @@ export default Vue.extend({
           isClick: false,
           icon: require("@/assets/zhanghuanquan.png")
         }
-      ]
+      ],
+      isShow: false
     };
   },
   computed: mapState({
     username: (state: any) => state.login.username
   }),
-  methods: {},
-  mounted() {
-    console.log(this);
+  methods: {
+    async clickItem(name: string) {
+      if (name === "我的收藏") {
+        this.isShow = false;
+        this.$router.push('/star')
+        return;
+      } else if (name === "地址管理") {
+        this.isShow = false;
+        this.$router.push('/location')
+        return;
+      } else {
+        await this.$store.commit("mine/changeProductName", { name });
+        this.isShow = true;
+        setTimeout(() => {
+          this.isShow = false;
+        }, 2000);
+      }
+    }
+  },
+  mounted() {},
+  components: {
+    Content
   }
 });
 </script>
