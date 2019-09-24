@@ -9,7 +9,7 @@
     </swiper>
     <div class="NavList">
       <ul class="ulList">
-        <li v-for="(item) in channel" :key="item.id">
+        <li v-for="(item) in channel" :key="item.id" @click="e=>ToDetail(item.id)">
           <span>
             <img :src="item.icon_url" alt />
           </span>
@@ -70,6 +70,33 @@
             </router-link>
           </swiper-slide>
         </swiper>
+      </div>
+    </div>
+    <div class="Impurity">
+      <div class="contentPage" v-for="(item) in categoryList" :key="item.id">
+        <div class="cateGoryName">{{item.name}}</div>
+        <div class="cateGoryGoodsWrap">
+          <router-link
+            class="cateGoryRout"
+            tag="div"
+            to="/"
+            v-for="(val) in item.goodsList"
+            :key="val.id"
+          >
+            <div class="goodsItemImg">
+              <img class="imgLazyload loadEnd" :src="val.list_pic_url" alt="imgLazyLoad" />
+            </div>
+            <div class="goodsItemName">{{val.name}}</div>
+            <div class="goodsItemPrice">￥{{val.retail_price}}</div>
+          </router-link>
+          <router-link class="categoryMoreGoods" to="/">
+            <div>更多{{item.name}}好物</div>
+            <img
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEMAAABDCAMAAADwFEhBAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAABLUExURf///4uLi7KysszMzHJycvb29qurq2ZmZv7+/m1tbZSUlN3d3Xd3d35+fsbGxtnZ2e/v7/z8/J2dneHh4evr676+voaGhri4uNPT04zm/X4AAAIzSURBVFjDvVjRlqsgDKwojgEsYq36/196pbZdRVyjh728eCxlIGEySbzd/nI0uWh7QwCZvhV5cxrgUdYIRl0+TgDIwQOQErlu5PTa6Fwo8jCDZCKIAjCldeufnS0NUAgGSnWfELLRxebcmE0o9+oAopv+ldn9eevnu18hcjrax5+T8l/mS0Ad2isVUO7t41rQs2K47EloXRxCgUbe1Y0EFQOpWhSayyBdoI2cuARpPg01odzeCMieCQZLCG+nIzzPRdQTtOZJlUFV5zAqhWy15I5Cng1taXBfvharV+bIVxuL4FjMkUEsj6GvKJ1eHGRAdk0uMwwfD9cYr2GMqKvPkUx1DcOZjxPKCG3D0ddRXf8urWEZlpuYelnUcx4BuWNCTSCR1OAIzUwVxWFlhiICoubIEwx3vCVqa7OYaaaYPPdSOW75/jKi55J0UrqNomv0/mHATcde94MzNzD+QeCHvUAgVRKFfwCn1GsRq6/VtMXA8VgmKDdjrG3hYGxt4ft0tmVYafns0/6EAG18+r5bxdbSyN2+Ocbk+kzUPM51XsztcP0dc6zY34m5KfY7tgbtxP5Hg1haKPuoBn2XTmni0Jg+qoXum5g4uSGuyT+5IUWO8rnSXoGwy6SdIGcnqR1S1DBXaqlbWEulqOmS1JZJatxXrc1u2B7xWnsnoe4Zotx+78Fy527vkaQHStKLpekJk/SmPz2yDntkze6Rg169k87J7nSvnuabQfDtorj47eK/j3/n9xya7EBtgAAAAABJRU5ErkJggg=="
+              alt="more"
+            />
+          </router-link>
+        </div>
       </div>
     </div>
   </div>
@@ -140,14 +167,20 @@ export default Vue.extend({
       brandList: (state: any) => state.First.brandList,
       newGoodsList: (state: any) => state.First.newGoodsList,
       hotGoodsList: (state: any) => state.First.hotGoodsList,
-      topicList: (state: any) => state.First.topicList
+      topicList: (state: any) => state.First.topicList,
+      categoryList: (state: any) => state.First.categoryList
     })
   },
 
   methods: {
     ...mapActions({
-      getData: "First/getData"
-    })
+      getData: "First/getData",
+      TabData: "First/TabData"
+    }),
+    ToDetail(id:any){
+        this.TabData(id)
+        this.$router.push(`/categorys/${id}`)
+    }
   },
 
   created() {
@@ -475,7 +508,7 @@ export default Vue.extend({
       img {
         width: 3.18rem;
         height: 2rem;
-        border-radius:0.04rem; 
+        border-radius: 0.04rem;
       }
 
       .imgLazyload.loadEnd {
@@ -516,6 +549,100 @@ export default Vue.extend({
         white-space: nowrap;
       }
     }
+  }
+}
+
+.contentPage {
+  width: 100%;
+  height: auto;
+
+  .cateGoryName {
+    height: 0.5rem;
+    text-align: center;
+    line-height: 0.5rem;
+  }
+
+  .cateGoryGoodsWrap {
+    display: flex;
+    flex-wrap: wrap;
+    background: #fff;
+  }
+
+  .cateGoryGoodsWrap .cateGoryRout {
+    display: inline-block;
+    width: 50%;
+    height: auto;
+    background: white;
+    padding: 0.1rem;
+    position: relative;
+  }
+
+  .cateGoryGoodsWrap .cateGoryRout:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid #eee;
+    border-right-width: 2px;
+    box-sizing: border-box;
+    width: 200%;
+    height: 200%;
+    transform: scale(0.5);
+    transform-origin: left top;
+  }
+
+  .goodsItemImg {
+    width: 100%;
+    min-height: 1rem;
+    height: auto;
+  }
+
+  .imgLazyload.loadEnd {
+    opacity: 1;
+    transition: all 1s;
+  }
+  .goodsItemImg > img {
+    width: 1.67rem;
+    height: 1.67rem;
+  }
+
+  .goodsItemName {
+    text-align: center;
+    font-size: 0.14rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-bottom: 0.1rem;
+    padding-top: 0.05rem;
+  }
+  .goodsItemPrice {
+    text-align: center;
+    font-size: 0.14rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: red;
+  }
+  .categoryMoreGoods {
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    text-decoration: none;
+    color:#000; 
+  }
+  .categoryMoreGoods > div {
+    width: 100%;
+    text-align: center;
+  }
+
+  .categoryMoreGoods > img {
+    padding: 0.2rem;
+    height: 0.7rem;
+    width: 0.7rem;
   }
 }
 </style>

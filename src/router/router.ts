@@ -48,7 +48,8 @@ export default new Router({
         {
           path: '/home/first',
           name: 'first',
-          component: () => import('../views/home/first/index.vue')
+          component: () => import('../views/home/first/index.vue'),
+          children:[]
         },
         {
           path: '/home/special',
@@ -70,6 +71,17 @@ export default new Router({
           name: 'my',
           component: () => import('../views/home/my/index.vue')
         },
+      ]
+    },
+    {
+      path:"/categorys/:id",
+      name:"categorys",
+      component:()=>import('../views/categorys/index.vue'),
+      children:[
+        //  {
+        //    path:"/categorys/:id",
+        //    component:()=>import('../views/categorys/live/index.vue')
+        //  }
       ]
     }
   ]

@@ -13,8 +13,17 @@ export function login(params: any) {
     return request.post('/auth/loginByMobile', params)
 }
 
+// 获取首页数据
 export async function getData() {
     return await request.get('/')
+}
+
+// 传ID获取每一项数据
+export async function TabData(params:any) {
+    console.log(params)
+    return await request.get('/goods/category',{
+        params:{id:params}
+    })
 }
 
 

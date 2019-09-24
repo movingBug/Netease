@@ -1,4 +1,4 @@
-import { getData } from "../../services/index"
+import { getData,TabData } from "../../services/index"
 
 let state = {
   banner: [],
@@ -7,7 +7,8 @@ let state = {
   channel: [],
   hotGoodsList: [],
   newGoodsList: [],
-  topicList: []
+  topicList: [],
+  data:{}
 }
 
 let mutations = {
@@ -19,20 +20,32 @@ let mutations = {
       state.hotGoodsList = payload.hotGoodsList
       state.newGoodsList = payload.newGoodsList
       state.topicList = payload.topicList
+  },
+
+  InterData(state:any,payload:any) {
+      console.log(JSON.parse(JSON.stringify(payload)),'payload----')
+      state.data = payload
+  },
+  tabData(state:any,payload:any){
+       console.log(payload)
   }
 } 
 
 let actions = {
   getData ({ commit }: any, payload: any) {
     return new Promise((resolve, reject) => {
-      setTimeout(() => {
         getData().then((res:any) => {
-          console.log("res-----", res.data)
           commit("firstData", res.data)
           resolve()
         })
-      }, 1000);
-      
+    })
+  },
+  TabData ({ commit }: any, payload: any) {
+    return new Promise((resolve, reject) => {
+        TabData(payload).then((res:any) => {
+          commit("InterData", res.data)
+          resolve()
+        })
     })
   }
 }

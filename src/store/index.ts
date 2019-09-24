@@ -8,10 +8,12 @@
  */
 import Vue from 'vue'
 import Vuex from 'vuex';
-import login from './modules/login';
 import Logger from 'vuex/dist/logger'
+
+import login from './modules/login';
 import mine from './modules/mine';
-import First from './modules/first'
+import First from './modules/first';
+import category from "./modules/category"
 
 Vue.use(Vuex)
 
@@ -19,7 +21,8 @@ const store = new Vuex.Store({
     modules: {
         login,
         First,
-        mine
+        mine,
+        category
     },
     plugins: [Logger()]
 })

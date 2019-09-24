@@ -11,15 +11,18 @@ import App from './App.vue'
 import router from './router/router'
 import store from './store/index'
 
+// 引入轮播
 import VueAwesomeSwiper from 'vue-awesome-swiper'
- 
-// require styles
 import 'swiper/dist/css/swiper.css'
- 
+
 Vue.use(VueAwesomeSwiper)
 
-Vue.config.productionTip = false;
+// // 引入ly-tab
+// import LyTab from 'ly-tab'
 
+// Vue.use(LyTab)
+
+Vue.config.productionTip = false;
 
 new Vue({
   router,
