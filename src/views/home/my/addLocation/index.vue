@@ -4,7 +4,7 @@
  * @Author: sueRimn
  * @Date: 2019-09-24 09:53:47
  * @LastEditors: sueRimn
- * @LastEditTime: 2019-09-24 12:04:13
+ * @LastEditTime: 2019-09-24 15:53:06
  -->
 <template>
   <div class="wrap">
@@ -17,7 +17,7 @@
         <input type="text" placeholder="电话号码" />
       </div>
       <div class="location">
-        <input type="text" placeholder="姓名" />
+        <input type="text" placeholder="所在地" />
       </div>
       <div class="detailed">
         <input type="text" placeholder="详细地址" />
@@ -29,19 +29,26 @@
     </main>
     <footer>
       <span class="qx">取消</span>
-      <span class="qr">确定</span>
+      <span class="qr">保存</span>
     </footer>
   </div>
 </template>
 
-<script lang="ts">
+<script>
+//组件
 export default {
-  name: "location",
+  name: "addlocation",
   data() {
     return {
       imgsrc:
         "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAmCAMAAACf4xmcAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAABCUExURUdwTMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzAV+Z0EAAAAVdFJOUwAJ+KUEFTPay2bzRXdZ7RkhmJ6qJOWhY+QAAAEDSURBVDjLnZTplsIgDIUNWwK2tdt9/1cdxHGmVcAc+dH25Hw0+71cvjhztDIZM4mNc4txo+BwZKxSVwbSFoMn8iFuCeDrG0RLNkc6GGK+ttCZ8gIzuJcgBgPxJ4rB4T2OkM0HjgRyq8V7Y8i/3/V06YVb/nKECa0qBYPffB1jaFd8AD8+RrBrY8R41FkQew2MkPtrR6IeRglzoW1/HrbizfZ9Pv8jCH0slOAm+D7mMeUn4PoYwegxpVNlCsqCKMurbJay9R8GyT0HSTmWeciTYsh7K+MPK1MW0H9eQOU652sqcch+15rUrFQXLpuFy7ksXLYuXDUZbBZ9v4sqiqju34jyD97JD4dkfgo1AAAAAElFTkSuQmCC",
-      isChecked: false
+      isChecked: false,
+      obj: {
+        label: { province: "所在省", city: "所在市", district: "" },
+        default: { province: "河南", city: "平顶山", district: "湛河区" },
+        noLabel: true,
+        address:''
+      }
     };
   },
   methods: {
@@ -58,6 +65,8 @@ export default {
           "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAmCAMAAACf4xmcAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAABCUExURUdwTMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzAV+Z0EAAAAVdFJOUwAJ+KUEFTPay2bzRXdZ7RkhmJ6qJOWhY+QAAAEDSURBVDjLnZTplsIgDIUNWwK2tdt9/1cdxHGmVcAc+dH25Hw0+71cvjhztDIZM4mNc4txo+BwZKxSVwbSFoMn8iFuCeDrG0RLNkc6GGK+ttCZ8gIzuJcgBgPxJ4rB4T2OkM0HjgRyq8V7Y8i/3/V06YVb/nKECa0qBYPffB1jaFd8AD8+RrBrY8R41FkQew2MkPtrR6IeRglzoW1/HrbizfZ9Pv8jCH0slOAm+D7mMeUn4PoYwegxpVNlCsqCKMurbJay9R8GyT0HSTmWeciTYsh7K+MPK1MW0H9eQOU652sqcch+15rUrFQXLpuFy7ksXLYuXDUZbBZ9v4sqiqju34jyD97JD4dkfgo1AAAAAElFTkSuQmCC";
       }
     }
+  },
+  components: {
   }
 };
 </script>

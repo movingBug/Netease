@@ -4,7 +4,7 @@
  * @Author: sueRimn
  * @Date: 2019-09-23 15:02:34
  * @LastEditors: sueRimn
- * @LastEditTime: 2019-09-24 10:24:17
+ * @LastEditTime: 2019-09-24 15:51:35
  -->
 
 <template>
@@ -29,7 +29,7 @@
         <div v-else class="actionText">{{item.name}}</div>
       </div>
     </div>
-    <p class="btnbox">退出登录</p>
+    <p class="btnbox" @click="Quit">退出登录</p>
     <div class="mask" v-if="isShow">
       <Content />
     </div>
@@ -37,8 +37,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import Content from './Notunlock/index';
+<script>
+import Content from "./Notunlock/index";
 import Vue from "vue";
 import { mapState } from "vuex";
 
@@ -112,17 +112,17 @@ export default Vue.extend({
     };
   },
   computed: mapState({
-    username: (state: any) => state.login.username
+    username: state => state.login.username
   }),
   methods: {
-    async clickItem(name: string) {
+    async clickItem(name) {
       if (name === "我的收藏") {
         this.isShow = false;
-        this.$router.push('/star')
+        this.$router.push("/star");
         return;
       } else if (name === "地址管理") {
         this.isShow = false;
-        this.$router.push('/location')
+        this.$router.push("/location");
         return;
       } else {
         await this.$store.commit("mine/changeProductName", { name });
@@ -131,6 +131,10 @@ export default Vue.extend({
           this.isShow = false;
         }, 2000);
       }
+    },
+    async Quit() {
+      await this.$store.commit("login/quitLogin");
+      this.$router.push("/");
     }
   },
   mounted() {},
