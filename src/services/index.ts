@@ -12,3 +12,9 @@ import request from '../utils/request';
 export function login(params: any) {
     return request.post('/auth/loginByMobile', params)
 }
+
+export async function getData() {
+    return await request.get('/')
+}
+
+

@@ -5,7 +5,7 @@
     </div>
     <div class="homeFoot">
       <div class="foot-item">
-        <router-link to="/home/first" tag="span">首页</router-link>
+        <router-link to="/home/first" tag="span" active-class="active">首页</router-link>
       </div>
       <div class="foot-item">
         <router-link to="/home/special" tag="span">专题</router-link>
@@ -69,5 +69,9 @@ html,body{
   height: 100%;
   text-align: center;
   line-height: 0.5rem;
+}
+
+.homeFoot .foot-item .active{
+   color:#09f; 
 }
 </style>
