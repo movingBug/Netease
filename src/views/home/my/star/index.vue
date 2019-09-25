@@ -4,7 +4,7 @@
  * @Author: sueRimn
  * @Date: 2019-09-24 09:53:47
  * @LastEditors: sueRimn
- * @LastEditTime: 2019-09-25 07:58:15
+ * @LastEditTime: 2019-09-25 14:27:05
  -->
 <template>
   <div class="wrap">
@@ -81,9 +81,8 @@ export default {
       }
     },
     clickDelete() {},
-     jumpClick(id: any) {
-        this.$store.commit("mine/changeProductId", { id });
-       this.$router.push("/productDetails");
+    jumpClick(id: any) {
+      this.$router.push(`/productDetails/${id}`);
     }
   },
   computed: mapState({

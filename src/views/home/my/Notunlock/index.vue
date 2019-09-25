@@ -4,7 +4,7 @@
  * @Author: sueRimn
  * @Date: 2019-09-24 07:59:11
  * @LastEditors: sueRimn
- * @LastEditTime: 2019-09-24 09:19:06
+ * @LastEditTime: 2019-09-25 17:19:30
  -->
 <template>
     <div class="content">
@@ -19,6 +19,7 @@ import Vue from "vue";
 export default Vue.extend({
   name: "notUnlock",
   computed: mapState({
+    
     productName: (state: any) => state.mine.productName
   })
 });
