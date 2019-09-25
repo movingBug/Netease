@@ -4,7 +4,7 @@
  * @Author: sueRimn
  * @Date: 2019-09-23 15:56:55
  * @LastEditors: sueRimn
- * @LastEditTime: 2019-09-24 21:02:58
+ * @LastEditTime: 2019-09-25 07:47:17
  */
 import request from '../utils/request';
 
@@ -26,3 +26,8 @@ export function getProductDetail(params: any) {
         params
     })
 }
+export async function getData() {
+    return await request.get('/')
+}
+
+

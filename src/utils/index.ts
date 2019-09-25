@@ -6,21 +6,21 @@
  * @LastEditors: sueRimn
  * @LastEditTime: 2019-09-07 15:02:33
  */
-import * as Cookie from 'js-cookie';
+// import * as Cookie from 'js-cookie';
 
-const key = 'authorization';
-export let getToken: () => any = () => {
-    return Cookie.get(key);
-}
+// const key = 'authorization';
+// export let getToken: () => any = () => {
+//     return Cookie.get(key);
+// }
 
-export let setToken: (value: string) => void = (value) => {
-    Cookie.set(key, value, { expires: 7 })
-}
+// export let setToken: (value: string) => void = (value) => {
+//     Cookie.set(key, value, { expires: 7 })
+// }
 
-export let setOnceToken: (value: string) => void = (value) => {
-    Cookie.set(key, value)
-}
+// export let setOnceToken: (value: string) => void = (value) => {
+//     Cookie.set(key, value)
+// }
 
-export let removeToken: () => void = () => {
-    Cookie.remove(key);
-}
+// export let removeToken: () => void = () => {
+//     Cookie.remove(key);
+// }

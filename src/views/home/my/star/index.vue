@@ -4,7 +4,7 @@
  * @Author: sueRimn
  * @Date: 2019-09-24 09:53:47
  * @LastEditors: sueRimn
- * @LastEditTime: 2019-09-24 21:01:15
+ * @LastEditTime: 2019-09-25 07:58:15
  -->
 <template>
   <div class="wrap">
@@ -91,7 +91,6 @@ export default {
   }),
   mounted() {
     this.getStar();
-    console.log(this);
   }
 };
 </script>
