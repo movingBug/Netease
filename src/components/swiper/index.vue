@@ -10,7 +10,7 @@
 </template>
 <script>
 import { swiper, swiperSlide } from "vue-awesome-swiper";
-// require("swiper/dist/css/swiper.css");
+require("swiper/dist/css/swiper.css");
 
 export default {
   props: ["options", "list"],

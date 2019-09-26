@@ -103,3 +103,66 @@ export function addShopcar(params:any){
     return request.post('/cart/add',params)
 }
 
+
+// 
+export function getclassify(){
+    return request.post('/catalog/index')
+}
+
+///catalog/current
+export async function getanother(params:any) {
+    return await request.get('/catalog/current',{
+        params:{id:params}
+    })
+}
+
+export async function getclass(params:any) {
+    return await request.get('/goods/category',{
+        params:{id:params}
+    })
+}
+
+export async function getgoods(params:any) {
+    return await request.get('/goods/list',{
+        params:{
+            categoryId:params,
+            page: 1,
+            size: 10
+        }
+    })
+}
+
+export async function getgoodsdetail(params:any) {
+    return await request.get('/goods/detail',{
+        params:{
+           id:params
+        }
+    })
+}
+
+export async function gethotsearch() {
+    return await request.get('/search/index')
+}
+
+export async function getfinddata(params:any) {
+    return await request.get('/search/helper',{
+        params:{
+            keyword:params
+        }
+    })
+}
+
+
+export async function getindex(params:any) {
+    return await request.get('/goods/list',{
+        params:{
+            params
+        }
+    })
+}
+
+
+
+
+
+
