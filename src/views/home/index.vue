@@ -1,13 +1,15 @@
 <template>
   <div class="home">
+    <router-view/>
       <div class="homeMain"></div>
       <div class="homeFoot">
           <router-link to="/home/first" tag="span">首页</router-link>
           <router-link to="/home/special" tag="span">专题</router-link>
           <router-link to="/home/classify" tag="span">分类</router-link>
           <router-link to="/home/shop" tag="span">购物车</router-link>
-          <router-link to="/home/my" tag="span">我的</router-link>
+          <router-link to="/home/my" tag="span">我的</router-link> 
       </div>
+      
   </div>
 </template>
 
@@ -37,7 +39,7 @@ export default Vue.extend({
      height: 50px;
      display:flex; 
      justify-content:center;
-     align-items:center;  
+     align-items:center; 
    }
 
    .homeFoot>span{
