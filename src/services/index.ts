@@ -4,7 +4,7 @@
  * @Author: sueRimn
  * @Date: 2019-09-23 15:56:55
  * @LastEditors: sueRimn
- * @LastEditTime: 2019-09-25 21:20:20
+ * @LastEditTime: 2019-09-26 11:27:24
  */
 import request from '../utils/request';
 
@@ -36,13 +36,15 @@ export function getrelatedList(params: any) {
     });
 }
 // 查询购物车商品数量
-export function getProductnum(params: any) {
-    return request.get('/cart/goodscount', {
-        params
-    })
+export function getProductnum() {
+    return request.get('/cart/goodscount')
 }
 // 添加到收藏栏
 export function addcollect(params: any) {
     return request.post('/collect/addordelete', params)
+}
+// 添加购物车
+export function addShopcar(params:any){
+    return request.post('/cart/add',params)
 }
 

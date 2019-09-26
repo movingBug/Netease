@@ -4,12 +4,12 @@
  * @Author: sueRimn
  * @Date: 2019-09-24 09:53:47
  * @LastEditors: sueRimn
- * @LastEditTime: 2019-09-25 14:27:05
+ * @LastEditTime: 2019-09-26 10:24:28
  -->
 <template>
   <div class="wrap">
     <header>
-      <span class="back">&lt;</span>
+      <span class="back" @click="jumpBack">&lt;</span>
       <span class="title">easyLikeGoods</span>
       <span class="right"></span>
     </header>
@@ -52,7 +52,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import { mapState } from "vuex";
 export default {
   name: "star",
@@ -63,30 +63,33 @@ export default {
     };
   },
   methods: {
+    jumpBack() {
+      this.$router.go(-1);
+    },
     getStar() {
       this.$store.dispatch("mine/getstarlist", {
         typeId: "0"
       });
     },
-    touchmove(e: any) {
+    touchmove(e) {
       this.startX = e.changedTouches[0].clientX;
     },
-    touchEnd(e: any, price: string) {
+    touchEnd(e, price) {
       this.endX = e.changedTouches[0].clientX;
       if (Math.abs(this.startX - this.endX) > 45) {
         const index = this.starlist.findIndex(
-          (item: any) => item.retail_price === price
+          (item) => item.retail_price === price
         );
         this.$store.commit("mine/touchEnd", { index });
       }
     },
     clickDelete() {},
-    jumpClick(id: any) {
+    jumpClick(id) {
       this.$router.push(`/productDetails/${id}`);
     }
   },
   computed: mapState({
-    starlist: (state: any) => state.mine.starlist
+    starlist: (state) => state.mine.starlist
   }),
   mounted() {
     this.getStar();

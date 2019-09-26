@@ -4,12 +4,12 @@
  * @Author: sueRimn
  * @Date: 2019-09-24 20:23:33
  * @LastEditors: sueRimn
- * @LastEditTime: 2019-09-25 21:05:11
+ * @LastEditTime: 2019-09-26 11:46:38
  -->
 <template>
   <div class="wrap">
     <header>
-      <span class="back">&lt;</span>
+      <span class="back" @click="jumpBack">&lt;</span>
       <span class="title" v-text="this.detailData.info.name"></span>
       <span class="right"></span>
     </header>
@@ -91,11 +91,15 @@
       </ul>
     </main>
     <footer>
-      <div class="star clum">☆</div>
+      <div class="star clum gold" v-if="isGold" @click="Clickgold">☆</div>
+      <div class="star clum" v-else @click="Clickgold">☆</div>
       <div class="shopcar clum">
-        <img src="@/assets/gouwucheman.png" />
+        <i class="iconfont" @click="clickJumpShopcar">
+          &#xe501;
+          <span v-text="this.shopcarCount"></span>
+        </i>
       </div>
-      <div class="addshopcar clumplus">加入购物车</div>
+      <div class="addshopcar clumplus" @click="clickShow">加入购物车</div>
       <div class="buy clumplus" @click="alertHint">立即购买</div>
     </footer>
     <Loading v-if="isShow" />
@@ -107,7 +111,7 @@
 <script>
 import { mapState } from "vuex";
 import { swiper, swiperSlide } from "vue-awesome-swiper";
-import Loading from "../hint/index";
+import Loading from "@/components/hint/index";
 import ShopMask from "@/components/windows/index";
 
 export default {
@@ -130,20 +134,33 @@ export default {
           type: "bullets"
         }
       },
-      isShow: false
+      isShow: false,
+      isGold: true
     };
   },
   methods: {
+    Clickgold() {
+      this.isGold = !this.isGold;
+    },
+    jumpBack() {
+      this.$router.go(-1);
+    },
     jumpDetailClick(id) {
       this.$router.push(`/kong/${id}`);
     },
-    initGetData() {
-      this.$store.dispatch("mine/getDetails", { id: this.$route.params.id });
+    async initGetData() {
+      await this.$store.dispatch("mine/getDetails", {
+        id: this.$route.params.id
+      });
+      await this.$store.dispatch("mine/SelectShopcar");
+      await this.$store.dispatch("mine/getRelated", {
+        id: this.$route.params.id
+      });
     },
-    initgetRelatedList() {
-      this.$store.dispatch("mine/getRelated", { id: this.$route.params.id });
-    },
-    alertHint() {
+    async alertHint(e) {
+      await this.$store.commit("mine/changeProductName", {
+        name: e.target.innerHTML
+      });
       this.isShow = true;
       setTimeout(() => {
         this.isShow = false;
@@ -151,17 +168,20 @@ export default {
     },
     clickShow() {
       this.$store.commit("mine/changeshopcarIsshow");
+    },
+    clickJumpShopcar() {
+      this.$router.push("/home/shop");
     }
   },
   computed: mapState({
     productId: state => state.mine.productId,
     detailData: state => state.mine.detailData,
     relatedList: state => state.mine.relatedList,
-    shopcarIsshow: state => state.mine.shopcarIsshow
+    shopcarIsshow: state => state.mine.shopcarIsshow,
+    shopcarCount: state => state.mine.shopcarCount
   }),
   mounted() {
     this.initGetData();
-    this.initgetRelatedList();
   },
   components: {
     swiper,

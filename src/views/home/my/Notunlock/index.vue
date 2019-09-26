@@ -4,11 +4,11 @@
  * @Author: sueRimn
  * @Date: 2019-09-24 07:59:11
  * @LastEditors: sueRimn
- * @LastEditTime: 2019-09-25 17:19:30
+ * @LastEditTime: 2019-09-26 11:20:48
  -->
 <template>
     <div class="content">
-      <img src="@/assets/bukaixin.png" />
+      <i class="iconfont">&#xe617;</i>
       <div>{{this.productName}}还未解锁，请耐心等待~</div>
     </div>
 </template>
@@ -19,7 +19,6 @@ import Vue from "vue";
 export default Vue.extend({
   name: "notUnlock",
   computed: mapState({
-    
     productName: (state: any) => state.mine.productName
   })
 });
