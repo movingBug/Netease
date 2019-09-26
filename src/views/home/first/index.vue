@@ -1,12 +1,6 @@
 <template>
   <div class="firstPage">
-    <swiper :options="swiperOption" class="swiper-wrap" ref="mySwiper" v-if="lists.length!=0">
-      <swiper-slide v-for="(item,index) in lists" :key="index" class="swiper-container">
-        <img :src="item.image_url" alt />
-      </swiper-slide>
-      <!-- 常见的小圆点 -->
-      <div class="swiper-pagination" v-for="(item,index) in lists" :key="index" slot="pagination"></div>
-    </swiper>
+    <Swiper :options="swiperOption" :list="lists" />
     <div class="NavList">
       <ul class="ulList">
         <li v-for="(item) in channel" :key="item.id" @click="e=>ToDetail(item.id)">
@@ -20,7 +14,12 @@
     <div class="brandBox">
       <div class="brandTitle">品牌制造商直供</div>
       <div class="brandWrap">
-        <router-link to="/" class="brandItem" v-for="(item) in brandList" :key="item.id">
+        <router-link
+          :to="'/brandDetail/'+item.id"
+          class="brandItem"
+          v-for="(item) in brandList"
+          :key="item.id"
+        >
           <div class="brandItemName">{{item.name}}</div>
           <div class="brandItemMinPrice">{{item.floor_price}}元起</div>
           <img class="imgLazyload loadEnd" :src="item.new_pic_url" alt="imgLazyLoad" />
@@ -30,6 +29,7 @@
     <div class="newGoodsBox">
       <div class="newGoodsTitle">新品首发</div>
       <div class="newGoodsWrap">
+        <!-- 这个需要改跳路由的 -->
         <router-link class="newGoodsItem" to="/" v-for="(item) in newGoodsList" :key="item.id">
           <img class="imgLazyload loadEnd" :src="item.list_pic_url" alt="imgLazyLoad" />
           <div class="newGoodsName">{{item.name}}</div>
@@ -60,7 +60,7 @@
           v-if="topicList.length!=0"
         >
           <swiper-slide v-for="(item) in topicList" :key="item.id" id="swiper-content-slide">
-            <router-link to="/" class="topGoodItem">
+            <router-link :to="'/topicDetail/'+item.id" class="topGoodItem">
               <img :src="item.item_pic_url" alt="no" />
               <div class="topGoodSubTitle">
                 {{item.title}}
@@ -106,6 +106,8 @@
 import Vue from "vue";
 import { mapState, mapMutations, mapActions } from "vuex";
 import { swiper, swiperSlide } from "vue-awesome-swiper";
+import Swiper from "../../../components/swiper/index.vue";
+
 require("swiper/dist/css/swiper.css");
 
 export default Vue.extend({
@@ -174,12 +176,10 @@ export default Vue.extend({
 
   methods: {
     ...mapActions({
-      getData: "First/getData",
-      TabData: "First/TabData"
+      getData: "First/getData"
     }),
-    ToDetail(id:any){
-        this.TabData(id)
-        this.$router.push(`/categorys/${id}`)
+    ToDetail(id: any) {
+      this.$router.push(`/categorys/${id}`);
     }
   },
 
@@ -188,7 +188,8 @@ export default Vue.extend({
   },
   components: {
     swiper,
-    swiperSlide
+    swiperSlide,
+    Swiper
   }
 });
 </script>
@@ -197,21 +198,6 @@ export default Vue.extend({
   width: 100%;
   height: auto;
   background: #eee;
-}
-
-.swiper-wrap {
-  width: 100%;
-  height: 2rem;
-}
-
-.swiper-container {
-  width: 100%;
-  height: 2rem;
-
-  img {
-    width: 100%;
-    height: 100%;
-  }
 }
 
 .NavList {
@@ -632,7 +618,7 @@ export default Vue.extend({
     align-items: center;
     background: white;
     text-decoration: none;
-    color:#000; 
+    color: #000;
   }
   .categoryMoreGoods > div {
     width: 100%;

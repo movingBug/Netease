@@ -1,6 +1,6 @@
 /*
- * @Descripttion: 
- * @version: 
+ * @Descripttion:
+ * @version:
  * @Author: sueRimn
  * @Date: 2019-09-23 15:02:34
  * @LastEditors: sueRimn
@@ -13,13 +13,17 @@ Vue.use(Router)
 
 export default new Router({
   mode: 'history',
-  linkActiveClass:'active',
+  linkActiveClass: 'active',
   base: process.env.BASE_URL,
   routes: [
     {
       path: '/',
       name: 'login',
       component: () => import('../views/login/index.vue')
+    },
+    {
+      path: '/',
+      redirect: '/login'
     },
     {
       path: '/location',
@@ -42,14 +46,15 @@ export default new Router({
       component: () => import('../views/home/index.vue'),
       children: [
         {
-           path:"/home",
-           redirect:"/home/first"
+          path: '/home',
+          redirect: '/home/first'
         },
+
         {
           path: '/home/first',
           name: 'first',
           component: () => import('../views/home/first/index.vue'),
-          children:[]
+          children: []
         },
         {
           path: '/home/special',
@@ -70,19 +75,29 @@ export default new Router({
           path: '/home/my',
           name: 'my',
           component: () => import('../views/home/my/index.vue')
-        },
+        }
       ]
     },
     {
-      path:"/categorys/:id",
-      name:"categorys",
-      component:()=>import('../views/categorys/index.vue'),
-      children:[
-        //  {
-        //    path:"/categorys/:id",
-        //    component:()=>import('../views/categorys/live/index.vue')
-        //  }
-      ]
+      path: '/categorys/:id',
+      name: 'categorys',
+      component: () => import('../views/categorys/index.vue'),
+      children: []
+    },
+    {
+      path: '/goods/:id',
+      name: 'goods',
+      component: () => import('../views/home/first/goods/index.vue')
+    },
+    {
+      path: '/brandDetail/:id',
+      name: 'brandDetail',
+      component: () => import('../views/home/first/brandDetail/index.vue')
+    },
+    {
+      path: '/topicDetail/:id',
+      name: 'topicDetail',
+      component: () => import('../views/home/first/topicDetail/index.vue')
     }
   ]
 })

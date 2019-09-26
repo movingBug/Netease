@@ -13,7 +13,9 @@ import Logger from 'vuex/dist/logger'
 import login from './modules/login';
 import mine from './modules/mine';
 import First from './modules/first';
-import category from "./modules/category"
+import category from "./modules/category";
+import brand from "./modules/brand";
+import topic from "./modules/topic"
 
 Vue.use(Vuex)
 
@@ -22,7 +24,9 @@ const store = new Vuex.Store({
         login,
         First,
         mine,
-        category
+        category,
+        brand,
+        topic
     },
     plugins: [Logger()]
 })

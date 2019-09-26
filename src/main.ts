@@ -17,10 +17,10 @@ import 'swiper/dist/css/swiper.css'
 
 Vue.use(VueAwesomeSwiper)
 
-// // 引入ly-tab
-// import LyTab from 'ly-tab'
+// 引入ly-tab
+import LyTab from 'ly-tab'
 
-// Vue.use(LyTab)
+Vue.use(LyTab)
 
 Vue.config.productionTip = false;
 
