@@ -42,7 +42,7 @@ import { getDatarelated } from '@/api/index'
 export default {
   name: "Topicdetail",
   data() {
-    return {
+    return { 
       detailData: {},
       commentData:{},
       relatedData:{}
@@ -61,8 +61,8 @@ export default {
     gowrite(){
       this.$router.push({name:"topiccomment"})
     },
-    async _getDatacomment(id){
-        const reset = await getDatacomment(id)
+    async _getDatacomment(id,size){
+        const reset = await getDatacomment(id,size)
         console.log(reset.data)  
         this.commentData = reset.data
     },
@@ -83,6 +83,9 @@ export default {
 </script>
 
 <style>
+html {
+    font-size: calc(100/375*100vw)
+}
 .wrap {
   width: 100%;
   height: 100%;
@@ -91,13 +94,14 @@ export default {
 }
 .header{
   width: 100%;
-  height: 3.5rem;
+  height: .6rem;
   display: flex;
   align-items: center;
   background: #fff;
   justify-content: space-around;
   position: fixed;
   top: 0;
+  font-size: .16rem;
 }
 .topicDetailImg img {
     width: 100%;
@@ -109,42 +113,50 @@ export default {
 .commentwrap{
   width: 100%;
   background: #fff;
-  margin-top: .6rem;
+  margin-top: .1rem;
 } 
 
 .titleline{
   width: 100%;
   display: flex;
-  padding: 1rem;
-  border-bottom: .1rem solid #ccc;
+  line-height: .45rem;
+  padding-left: .1rem;
+  border-bottom: .01rem solid #ccc;
   position: relative;
 }
-.titleicon{
+.titlename{
+  font-size: .16rem;
+  
+}
+
+.titleicon i{
   position: absolute;
-  right: 1rem;
+  right: .1rem;
 }
 .relateTopic{
   width: 100%;
 }
 .relateTopicTitle{
   width: 100%;
-  line-height: 3rem;
+  line-height: .4rem;
   text-align: center;
+  font-size: .16rem;
 }
 .relateTopicItem{
-  width: 95%;
+  width: 94%;
   background: #fff;
-  padding: .7rem;
-  margin-bottom: .7rem;
-  margin-left:.6rem;
+  padding: .1rem;
+  margin-bottom: .1rem;
+  margin-left:.1rem;
 
 }
 .relateTopicItem img{
   width: 100%;
-  height: 13rem;
+  height: 2.5rem;
 }
 .relateTopicItem span{
   color: #777474;
-  line-height: 2rem;
+  line-height: .02rem;
+  font-size: .16rem;
 }
 </style>

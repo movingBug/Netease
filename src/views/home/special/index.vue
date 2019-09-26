@@ -47,6 +47,9 @@ export default Vue.extend({
 })
 </script>
 <style>
+html {
+    font-size: calc(100/375*100vw)
+}
   .list{
     width: 100%;
   }
@@ -55,28 +58,30 @@ export default Vue.extend({
   }
   .list dl dt{
     width: 100%;
+    height: 2rem;
   }
   .list dl dt img{
     width: 100%;
-    height: 13rem;
+    height: 2rem;
   }
   .list dl dd{
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: .6rem;
+    padding: .1rem;
   }
   .list dl dd h4{
     font-weight: normal;
+    font-size: 0.16rem;
   }
   .list dl dd p{
-    font-size:81.3%;
-    line-height: 2rem;
+    font-size:.13rem;
+    line-height: .3rem;
     color: #6e6c6c;
   }
   .list dl dd span{
     color: red;
-    font-size: 87.5%;
+    font-size: .14rem;
   }
 </style>
 

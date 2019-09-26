@@ -14,13 +14,13 @@ export const getDatadetail = (id:any)=>{
     return result;
 }
 //评论
-export const getDatacomment = (id:any)=>{
+export const getDatacomment = (id:any,num:any)=>{
     const result = instance.get('/comment/list',{
         params:{
             valueId:id,
             typeId:1,
             page:5,
-            size:1
+            size:num
         }
     });
     return result;

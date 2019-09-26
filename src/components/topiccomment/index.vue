@@ -48,6 +48,9 @@ import "../../fonts/iconfont.css"
 </script>
 
 <style>
+html {
+    font-size: calc(100/375*100vw)
+}
 .commentwrite{
   width: 100%;
   height: 100%;
@@ -56,27 +59,29 @@ import "../../fonts/iconfont.css"
 }
 .header{
   width: 100%;
-  height: 3.5rem;
+  height: .44rem;
   display: flex;
   align-items: center;
   background: #fff;
   justify-content: space-between;
 }
+.header span{
+    font-size: .16rem
+}
 .textAreaContent{
     width: 100%;
     display: flex;
-    flex-direction: row;
     justify-content: center;
     position: relative;
 }
 .textAreaContent textarea{
   border: 1px solid #e6e6ee;
-  padding:5px;
-  line-height: 24px;
-  border-radius: 5px;
-  width: 360px;
-  margin-top: .5rem;
-  height: 160px;
+  padding:.05rem;
+  line-height: .24rem;
+  border-radius: .05rem;
+  width: 3.6rem;
+  margin-top: .05rem;
+  height: 1.6rem;
   outline: none;
 }
 .btn{
@@ -84,10 +89,10 @@ import "../../fonts/iconfont.css"
     outline: none;
     background: #41cffd;
     color: #fff;
-    padding: .5rem 2rem;
+    padding: .05rem .2rem;
     position: absolute;
-    right: .7rem;
-    margin-top: .2rem;
+    right: .07rem;
+    margin-top: .02rem;
     border-radius: .5rem;
 }
 </style>
