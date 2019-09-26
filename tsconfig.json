@@ -30,11 +30,8 @@
     "src/**/*.tsx",
     "src/**/*.vue",
     "tests/**/*.ts",
-<<<<<<< HEAD
-    "tests/**/*.tsx", "src/store/login.ts", "src/store/index.js"
-=======
+    "tests/**/*.tsx", "src/store/login.ts", "src/store/index.js",
     "tests/**/*.tsx", "src/main.ts", "src/store/index.js"
->>>>>>> fb747870daa7fe444d1999475d3fefda0139ae8c
   ],
   "exclude": [
     "node_modules"
