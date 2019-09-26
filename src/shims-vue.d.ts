@@ -5,6 +5,7 @@ declare module '*.vue' {
 
 declare module 'vue-awesome-swiper'
 declare module 'ly-tab'
+declare module 'swiper'
 
 
 

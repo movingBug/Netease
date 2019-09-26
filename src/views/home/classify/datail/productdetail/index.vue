@@ -1,10 +1,3 @@
-<!--
- * @Description: In User Settings Edit
- * @Author: your name
- * @Date: 2019-09-24 19:27:11
- * @LastEditTime: 2019-09-25 09:44:26
- * @LastEditors: Please set LastEditors
- -->
 <template>
     <div class='product'>
     <p @click="back">返回🔙</p> 
@@ -41,7 +34,7 @@
 <script lang="">
 import Vue from 'vue'
 import Swiper from 'swiper';
-import '../../../../../../node_modules/swiper/css/swiper.min.css'
+
 import {mapState} from 'vuex'
 
 export default Vue.extend({
@@ -84,7 +77,7 @@ export default Vue.extend({
     }
 })
 </script>
-<style scoped>
+<style scoped lang="scss">
 .product{
     widows: 100%;
     height:100%;

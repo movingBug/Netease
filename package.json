@@ -1,63 +1,63 @@
 {
-    "name": "vue-app",
-    "version": "0.1.0",
-    "private": true,
-    "scripts": {
-        "serve": "vue-cli-service serve",
-        "build": "vue-cli-service build",
-        "lint": "vue-cli-service lint"
+  "name": "vue-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "better-scroll": "^1.15.2",
+    "core-js": "^2.6.5",
+    "css-loader": "^3.2.0",
+    "ly-tab": "^2.1.2",
+    "swiper": "^5.0.3",
+    "vue": "^2.6.10",
+    "vue-address-picker": "^1.1.1",
+    "vue-awesome-swiper": "^3.1.3",
+    "vue-loader": "^15.7.1",
+    "vue-router": "^3.0.3",
+    "vuex": "^3.1.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.11.0",
+    "@vue/cli-plugin-eslint": "^3.11.0",
+    "@vue/cli-plugin-typescript": "^3.11.0",
+    "@vue/cli-service": "^3.11.0",
+    "@vue/eslint-config-standard": "^4.0.0",
+    "@vue/eslint-config-typescript": "^4.0.0",
+    "axios": "^0.19.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.1.0",
+    "typescript": "^3.4.3",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
     },
-    "dependencies": {
-        "better-scroll": "^1.15.2",
-        "core-js": "^2.6.5",
-        "css-loader": "^3.2.0",
-        "ly-tab": "^2.1.2",
-        "swiper": "^5.0.3",
-        "vue": "^2.6.10",
-        "vue-address-picker": "^1.1.1",
-        "vue-awesome-swiper": "^3.1.3",
-        "vue-loader": "^15.7.1",
-        "vue-router": "^3.0.3",
-        "vuex": "^3.1.1"
-    },
-    "devDependencies": {
-        "@vue/cli-plugin-babel": "^3.11.0",
-        "@vue/cli-plugin-eslint": "^3.11.0",
-        "@vue/cli-plugin-typescript": "^3.11.0",
-        "@vue/cli-service": "^3.11.0",
-        "@vue/eslint-config-standard": "^4.0.0",
-        "@vue/eslint-config-typescript": "^4.0.0",
-        "axios": "^0.19.0",
-        "babel-eslint": "^10.0.1",
-        "eslint": "^5.16.0",
-        "eslint-plugin-vue": "^5.0.0",
-        "node-sass": "^4.9.0",
-        "sass-loader": "^7.1.0",
-        "typescript": "^3.4.3",
-        "vue-template-compiler": "^2.6.10"
-    },
-    "eslintConfig": {
-        "root": true,
-        "env": {
-            "node": true
-        },
-        "extends": [
-            "plugin:vue/essential",
-            "@vue/standard",
-            "@vue/typescript"
-        ],
-        "rules": {},
-        "parserOptions": {
-            "parser": "@typescript-eslint/parser"
-        }
-    },
-    "postcss": {
-        "plugins": {
-            "autoprefixer": {}
-        }
-    },
-    "browserslist": [
-        "> 1%",
-        "last 2 versions"
-    ]
+    "extends": [
+      "plugin:vue/essential",
+      "@vue/standard",
+      "@vue/typescript"
+    ],
+    "rules": {},
+    "parserOptions": {
+      "parser": "@typescript-eslint/parser"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
 }

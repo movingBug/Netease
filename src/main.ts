@@ -13,9 +13,8 @@ import store from './store/index'
 
 // 引入轮播
 import VueAwesomeSwiper from 'vue-awesome-swiper'
-import 'swiper/dist/css/swiper.css'
 // require styles
-import 'swiper/dist/css/swiper.css';
+// import 'swiper/dist/css/swiper.css';
 import "@/assets/font/iconfont.css";
 
 Vue.use(VueAwesomeSwiper)

@@ -1,23 +1,14 @@
 <!--
-<<<<<<< HEAD
  * @Descripttion: 
  * @version: 
  * @Author: sueRimn
  * @Date: 2019-09-25 07:46:42
  * @LastEditors: sueRimn
  * @LastEditTime: 2019-09-25 14:32:27
-=======
- * @Description: In User Settings Edit
- * @Author: your name
- * @Date: 2019-09-23 15:17:54
- * @LastEditTime: 2019-09-23 16:35:38
- * @LastEditors: Please set LastEditors
->>>>>>> fb747870daa7fe444d1999475d3fefda0139ae8c
  -->
 <template>
   <div class="home">
     <div class="homeMain">
-<<<<<<< HEAD
       <router-view />
     </div>
     <div class="homeFoot">
@@ -29,19 +20,6 @@
       </div>
       <div class="foot-item">
         <router-link to="/home/classify" tag="span">分类</router-link>
-=======
-       <router-view/>
-    </div>
-    <div class="homeFoot">
-      <div class="foot-item">
-        <router-link to="/home/first" tag="span">首页</router-link>
-      </div>
-      <div class="foot-item">
-        <router-link to="/home/special"  tag="span">专题</router-link>
-      </div>
-      <div class="foot-item">
-        <router-link to="/home/classify"  tag="span">分类</router-link>
->>>>>>> fb747870daa7fe444d1999475d3fefda0139ae8c
       </div>
       <div class="foot-item">
         <router-link to="/home/shop" tag="span">购物车</router-link>
@@ -58,7 +36,6 @@ import Vue from "vue";
 
 export default Vue.extend({
   name: "home",
-<<<<<<< HEAD
   components: {},
   methods: {
     getlocationID() {
@@ -80,16 +57,6 @@ html,
 body {
   width: 100%;
   height: 100%;
-=======
-  components: {}
-});
-</script>
-<style lang="scss">
-
-html,body{
-   width: 100%;
-   height: 100%;
->>>>>>> fb747870daa7fe444d1999475d3fefda0139ae8c
 }
 
 .home {
@@ -101,11 +68,7 @@ html,body{
 
 .homeMain {
   flex: 1;
-<<<<<<< HEAD
   overflow: auto;
-=======
-  overflow:auto; 
->>>>>>> fb747870daa7fe444d1999475d3fefda0139ae8c
 }
 
 .homeFoot {
@@ -122,16 +85,10 @@ html,body{
   height: 100%;
   text-align: center;
   line-height: 0.5rem;
-<<<<<<< HEAD
 }
 
 .homeFoot .foot-item .active {
   color: #09f;
+  border-top:1px solid #ccc; 
 }
-=======
-  border-top:solid 1px #ccc;
-}
-
-
->>>>>>> fb747870daa7fe444d1999475d3fefda0139ae8c
 </style>
