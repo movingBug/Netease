@@ -2,14 +2,14 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-09-23 14:42:20
- * @LastEditTime: 2019-09-24 17:02:26
+ * @LastEditTime: 2019-09-25 10:09:06
  * @LastEditors: Please set LastEditors
  -->
 <template>
   <div class='classify'>
    
     <div class='search'>
-       <p>请输入你要搜索的商品名</p>
+       <p @click='search'>请输入你要搜索的商品名</p>
     </div>
     <div class="product">
       <div class="list">
@@ -71,11 +71,12 @@ export default Vue.extend({
 
   methods:{
      ...mapActions(['getclassify','getanother','getclass','getgoods']),
-    search:function(e){
+    search(){
+      this.$router.push('/search')
        // console.log(e.keyCode,this.serchval);
     },
-    todetail(id){
-      this.getclass(id);
+   async todetail(id){
+      await this.getclass(id);
       this.$router.history.push('/home/classify/detail');
     },
     changeind(id,ind){
@@ -87,8 +88,6 @@ export default Vue.extend({
     }
   },
   mounted(){
-    
-     
    this.Bscroll = new BScroll('.right',{
        probeType:2,
        click:true

@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-09-24 11:49:23
- * @LastEditTime: 2019-09-24 19:29:30
+ * @LastEditTime: 2019-09-25 17:12:35
  * @LastEditors: Please set LastEditors
  -->
 <template>
@@ -10,7 +10,7 @@
 <ly-tab
     v-model="selectedId"
     :items="arr"
-    :options="options"
+    :options="options" 
     @change='()=>change()'
 >
 </ly-tab>
@@ -33,7 +33,7 @@ Vue.use(LyTab)
 export default Vue.extend({
     data(){
         return({
-       selectedId: 0,
+        selectedId: -1,
         options: {
         activeColor: '#1d98bd'
        },
@@ -45,16 +45,20 @@ export default Vue.extend({
    
     methods:{ 
       ...mapActions(['getgoods','getgoodsdetail']),
-      change(){
-          this.getgoods(this.arr[this.selectedId].id)
+    change(){
+         
+          this.arr.length?this.getgoods(this.arr[this.selectedId].id):this.getgoods(1008002)
+         
       },
       togooddatail(id){
+        
         this.getgoodsdetail(id);
         this.$router.push('/home/classify/detail/product');
       }
     },
     mounted(){
-      this.getgoods(1008002)
+        this.selectedId=0;
+         
     }
 })
 </script>

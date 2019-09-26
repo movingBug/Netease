@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-09-24 19:27:11
- * @LastEditTime: 2019-09-24 21:28:13
+ * @LastEditTime: 2019-09-25 09:44:26
  * @LastEditors: Please set LastEditors
  -->
 <template>
@@ -16,17 +16,26 @@
      <div class="swiper-pagination"></div>
     </div>
     <div class='select' @click="showmark">选择规则</div>
+    <div class='question'>
+        <h4>---常见问题分析-----</h4>
+        <div v-for='(item,index) in gooddetail.issue' :key='index'>
+             <p>问:{{item.question}}</p>
+             <p>答:{{item.answer}}</p>
+        </div>
+    </div>
     <div class="mark" v-show="flag">
         <div class='selectoption'>
-            <p>
-                <span>{{gooddetail.attribute[0].name}}</span><span>{{gooddetail.attribute[0].value}}</span>
+            {{gooddetail.attribute}}
+            <p v-if='gooddetail.attribute'>
+                <span>{{gooddetail.attribute[2].name}}</span><span>{{gooddetail.attribute[2].value}}</span>
             </p>
-             <p>
-                <span>{{gooddetail.attribute[1].name}}</span><span :class="cla" @click="changecls">{{gooddetail.attribute[1].value}}</span>
+             <p v-if='gooddetail.attribute'>
+                <span>{{gooddetail.attribute[3].name}}</span><span :class="cla" @click="changecls">{{gooddetail.attribute[3].value}}</span>
             </p>
             <div><span @click="hide">取消</span><span @click="hide">确定</span></div>
             </div>
     </div>
+    .
     </div>
 </template>
 <script lang="">
@@ -84,7 +93,7 @@ export default Vue.extend({
     flex-direction:column;
     /* overflow-y:auto; */
 }
-.product p{
+.product>p{
     width:100%;
     height:.4rem;
     line-height:.4rem;
@@ -108,8 +117,8 @@ export default Vue.extend({
 }
 .product .mark .selectoption{
     width:100%;
-    height:2rem;
-   
+    height:auto;
+   padding:.2rem auto;
     position: absolute;
     left:0;
     bottom:0;
@@ -151,6 +160,24 @@ width:90%;
     text-align:right;
     color:skyblue;
     line-height:.4rem;
+}
+.question{
+    width:100%;
+    height:auto;
+    margin-top:.1rem;
+    background: #ccc;
+    padding:0.2rem auto;
+}
+.question h4{
+    width:100%;
+    height: .4rem;
+    text-align: center;
+    line-height:.4rem;
+}
+.question div>p{
+    width:100%;
+    padding:0 .2rem;
+    line-height:.3rem;
 }
 
 </style>

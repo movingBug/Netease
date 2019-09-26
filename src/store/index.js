@@ -2,12 +2,13 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-09-23 19:43:48
- * @LastEditTime: 2019-09-24 19:33:49
+ * @LastEditTime: 2019-09-26 09:14:10
  * @LastEditors: Please set LastEditors
  */
 import Vue from 'vue'
 import Vuex from 'vuex'
 import request from '../utils/request'
+import { readSync } from 'fs'
 
 Vue.use(Vuex)
 const store = new Vuex.Store({
@@ -18,7 +19,11 @@ const store = new Vuex.Store({
       arr:[],
       goods:[],
       firstgood:[],
-      gooddetail:{}
+      gooddetail:{},
+      hotlist:[],
+      historylist:[],
+      title:'',
+      searchlist:[]
     },
     mutations: {
        setclass(obj,a){
@@ -37,6 +42,16 @@ const store = new Vuex.Store({
        },
        setdatail(old,newval){
         old.gooddetail=newval.gooddetail;
+       },
+       sethotlist(old,newval){
+           old.hotlist=newval.hotlist;
+           old.historylist=newval.historylist;
+       },
+       settitle(old,newval){
+        old.title=newval.title;
+       },
+       setsearchlist(old,newval){
+          old.searchlist=newval.list;
        }
     },
     actions:{
@@ -76,7 +91,7 @@ const store = new Vuex.Store({
                 params:{
                     categoryId:id,
                     page:1,
-                    size:20
+                    size:10
                 }
             }).then(res=>{
                 
@@ -99,8 +114,43 @@ const store = new Vuex.Store({
                     context.commit('setdatail',{gooddetail:res.data.data});
                 }
             })
+        },
+        gethotsearch(context,val){
+            request.get('/search/index').then(res=>{
+                
+                if(res.data.errno===0){
+                   context.commit('sethotlist',{hotlist:res.data.data.hotKeywordList,historylist:res.data.data.historyKeywordList});
+                }
+               
+            })
+        },
+        getfinddata(context,val){
+           request.get('/search/helper',{
+               params:{
+                keyword:val
+               }
+           }).then(res=>{
+               
+               if(res.data.errno===0){
+                  val===''?context.commit('settitle',{title:''}):context.commit('settitle',{title:res.data.data[0]});
+               }
+               
+           })
+        },
+        getindex(context,val){
+            request.get('/goods/list',{
+                params:val
+            }).then(res=>{
+                if(res.data.errno===0){
+                 
+                    context.commit('setsearchlist',{list:res.data.data.data})
+                }
+                
+            })
+        },
+        clearsearch(context){
+           context.commit('setsearchlist',{list:[]})
         }
-        
     }
   })
   export default store;
