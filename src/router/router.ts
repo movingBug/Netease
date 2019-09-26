@@ -4,7 +4,7 @@
  * @Author: sueRimn
  * @Date: 2019-09-23 15:02:34
  * @LastEditors: sueRimn
- * @LastEditTime: 2019-09-24 11:26:19
+ * @LastEditTime: 2019-09-25 14:57:34
  */
 import Vue from 'vue'
 import Router from 'vue-router'
@@ -29,6 +29,16 @@ export default new Router({
       path: '/location',
       name: 'location',
       component: () => import('../views/home/my/location/index.vue')
+    },
+    {
+      path: '/productDetails/:id',
+      name: 'productDetails',
+      component: () => import('../views/home/my/star/details/index.vue')
+    },
+    {
+      path: '/kong/:id',
+      name: 'kong',
+      component: () => import('../views/home/my/star/details/kong.vue')
     },
     {
       path: '/addLocation',

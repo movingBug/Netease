@@ -1,7 +1,15 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: sueRimn
+ * @Date: 2019-09-25 07:46:42
+ * @LastEditors: sueRimn
+ * @LastEditTime: 2019-09-25 14:32:27
+ -->
 <template>
   <div class="home">
     <div class="homeMain">
-       <router-view/>
+      <router-view />
     </div>
     <div class="homeFoot">
       <div class="foot-item">
@@ -24,23 +32,31 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import Vue from "vue";
 
 export default Vue.extend({
-  name: 'home',
+  name: "home",
   components: {},
   methods: {
-
+    getlocationID() {
+      let ID = window.localStorage.getItem("sessionKey");
+      if (!ID) {
+        this.$router.replace("/");
+      }
+    }
+  },
+  mounted() {
+    this.getlocationID();
   }
-  
-})
+});
 </script>
 <style lang="scss">
 // @import '../assets/font/iconfont.css';
 
-html,body{
-   width: 100%;
-   height: 100%;
+html,
+body {
+  width: 100%;
+  height: 100%;
 }
 
 .home {
@@ -52,7 +68,7 @@ html,body{
 
 .homeMain {
   flex: 1;
-  overflow:auto
+  overflow: auto;
 }
 
 .homeFoot {
@@ -71,7 +87,7 @@ html,body{
   line-height: 0.5rem;
 }
 
-.homeFoot .foot-item .active{
-   color:#09f; 
+.homeFoot .foot-item .active {
+  color: #09f;
 }
 </style>

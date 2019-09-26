@@ -4,12 +4,12 @@
  * @Author: sueRimn
  * @Date: 2019-09-24 09:53:47
  * @LastEditors: sueRimn
- * @LastEditTime: 2019-09-24 11:25:17
+ * @LastEditTime: 2019-09-24 15:43:41
  -->
 <template>
     <div class="wrap">
         <header>
-            <span class="back">&lt;</span>
+            <span class="back" @click="clickBack">&lt;</span>
             <span class="title">地址管理</span>
                <span class="right"></span>
         </header>
@@ -21,12 +21,15 @@
     </div>
 </template>
 
-<script lang="ts">
+<script>
 export default {
     name:'location',
     methods: {
         clickJump(){
             this.$router.push('/addLocation')
+        },
+        clickBack(){
+            this.$router.push('/home/my')
         }
     },
 }

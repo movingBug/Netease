@@ -77,9 +77,10 @@ body,
     border: .5px solid gainsboro;
 }
 
-.userlist .listItem img {
+.userlist .listItem i {
     width: 0.35rem;
     height: 0.35rem;
+    font-size: .3rem;
     display: block;
     margin-top: .4rem;
     margin-bottom: .1rem;
@@ -92,7 +93,9 @@ body,
     font-size: .15rem;
 
 }
-
+.userlist .listItem .action{
+    color:rgb(33, 150, 243);
+}
 .userlist .listItem .actionText {
     color: rgb(33, 150, 243);
     color: .15rem;
@@ -125,8 +128,10 @@ body,
     text-align: center;
 }
 
-.mask .content img {
+.mask .content i {
     margin-top: 0.1rem;
+    font-size: .35rem;
+    color:white;
     width: 0.4rem;
     height: 0.4rem;
 }

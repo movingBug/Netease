@@ -4,7 +4,7 @@
  * @Author: sueRimn
  * @Date: 2019-09-23 15:02:34
  * @LastEditors: sueRimn
- * @LastEditTime: 2019-09-24 10:24:17
+ * @LastEditTime: 2019-09-26 10:50:37
  -->
 
 <template>
@@ -23,13 +23,13 @@
         class="listItem"
         @click="clickItem(item.name)"
       >
-        <img :src="item.icon" v-if="!item.isClick" class="imgitem" />
-        <img :src="item.icon" v-else class="action" />
+      <i class="iconfont imgitem" v-if="!item.isClick" v-html="item.icon"></i>
+      <i class="iconfont action" v-else v-html="item.icon"></i>
         <div v-if="!item.isClick" class="listText">{{item.name}}</div>
         <div v-else class="actionText">{{item.name}}</div>
       </div>
     </div>
-    <p class="btnbox">退出登录</p>
+    <p class="btnbox" @click="Quit">退出登录</p>
     <div class="mask" v-if="isShow">
       <Content />
     </div>
@@ -37,8 +37,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import Content from './Notunlock/index';
+<script>
+import Content from "./Notunlock/index";
 import Vue from "vue";
 import { mapState } from "vuex";
 
@@ -50,79 +50,79 @@ export default Vue.extend({
         {
           name: "我的收藏",
           isClick: true,
-          icon: require("@/assets/shoucang.png")
+          icon: `&#xe60a;`
         },
         {
           name: "地址管理",
           isClick: true,
-          icon: require("@/assets/dizhiguanli.png")
+          icon: "&#xe503;"
         },
         {
           name: "我的订单",
           isClick: false,
-          icon: require("@/assets/wodedingdan.png")
+          icon:"&#xe627;"
         },
         {
           name: "周末拼单",
           isClick: false,
-          icon: require("@/assets/rili.png")
+          icon: "&#xe50c;"
         },
         {
           name: "优惠券",
           isClick: false,
-          icon: require("@/assets/youhuiquan.png")
+          icon: "&#xe64a;"
         },
         {
           name: "优选购",
           isClick: false,
-          icon: require("@/assets/you.png")
+          icon: "&#xe682;"
         },
         {
           name: "我的红包",
           isClick: false,
-          icon: require("@/assets/hongbao.png")
+          icon: "&#xe6e7;"
         },
         {
           name: "会员plus",
           isClick: false,
-          icon: require("@/assets/vip.png")
+          icon: "&#xe6ab;"
         },
         {
           name: "邀请返利",
           isClick: false,
-          icon: require("@/assets/yao.png")
+          icon: "&#xe641;"
         },
         {
           name: "意见反馈",
           isClick: false,
-          icon: require("@/assets/fankui.png")
+          icon: "&#xe616;"
         },
         {
           name: "客服咨询",
           isClick: false,
-          icon: require("@/assets/kefu.png")
+          icon: "&#xe604;"
         },
         {
           name: "账户安全",
           isClick: false,
-          icon: require("@/assets/zhanghuanquan.png")
+          icon: "&#xe66e;"
         }
       ],
       isShow: false
     };
   },
   computed: mapState({
-    username: (state: any) => state.login.username
+    username: state => state.login.username
   }),
   methods: {
-    async clickItem(name: string) {
+    async clickItem(name) {
       if (name === "我的收藏") {
         this.isShow = false;
-        this.$router.push('/star')
+        this.$router.push("/star");
         return;
       } else if (name === "地址管理") {
         this.isShow = false;
-        this.$router.push('/location')
+        this.$router.push("/location");
         return;
       } else {
         await this.$store.commit("mine/changeProductName", { name });
@@ -131,6 +131,10 @@ export default Vue.extend({
           this.isShow = false;
         }, 2000);
       }
+    },
+    async Quit() {
+      await this.$store.commit("login/quitLogin");
+      this.$router.push("/");
     }
   },
   mounted() {},

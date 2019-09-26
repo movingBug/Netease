@@ -1,0 +1,147 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    outline: none;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+%juzhong {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+html {
+    font-size: calc(100/375*100vw)
+}
+
+html,
+body,
+.mask {
+    width: 100%;
+    height: 100%;
+}
+
+.mask {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    top: 100%;
+    transition: all .1s;
+    z-index: 999;
+}
+
+.maskTop {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    top: 0;
+    transform: translateZ(1px);
+}
+
+.mask .close {
+    flex: 6;
+    width: 100%;
+}
+
+.mask .content {
+    flex: 4;
+    background-color: white;
+}
+
+.content .showcont {
+    display: flex;
+    padding: .1rem .1rem;
+    position: relative;
+}
+
+.content .showcont img {
+    width: 1rem;
+    height: 1rem;
+}
+
+.content .showcont .gooodsSizePriceAndSize {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 .05rem;
+    float: left;
+    flex: 1 1;
+    height: 100%;
+    font-size: .15rem;
+    text-align: left;
+}
+
+.content .showcont .gooodsSizePriceAndSize div {
+    width: 100%;
+    height: auto;
+    line-height: .3rem;
+    color: #888;
+}
+
+.content .showcont .gooodsSizePriceAndSize span {
+    color: red;
+}
+
+.content .showcont .closeMask {
+    position: absolute;
+    right: .2rem;
+    top: .2rem;
+    width: .168rem;
+    height: .16rem;
+    border: 1px solid red;
+    color: red;
+    text-align: center;
+    line-height: .1rem;
+}
+
+.control {
+    height: auto;
+}
+
+.control .num {
+    margin-left: .1rem;
+    padding-bottom: .1rem;
+}
+
+.control .controlnum {
+    width: 2rem;
+    display: flex;
+    height: .4rem;
+}
+
+.control .controlnum span {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ededed;
+}
+
+.control .controlBtn {
+    margin-top: .33rem;
+    width: 100%;
+    display: flex;
+    height: .5rem;
+}
+
+.control .controlBtn div {
+    flex: 1;
+    height: 100%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.control .controlBtn .addshopcar {
+    background: linear-gradient(90deg, #ff9500, #ff5e3a);
+}
+
+.control .controlBtn .buy {
+    background: linear-gradient(90deg, #1d62f0, #19d5fd);
+}
