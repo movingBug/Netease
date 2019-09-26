@@ -30,7 +30,7 @@
       <div class="newGoodsTitle">新品首发</div>
       <div class="newGoodsWrap">
         <!-- 这个需要改跳路由的 -->
-        <router-link class="newGoodsItem" to="/" v-for="(item) in newGoodsList" :key="item.id">
+        <router-link class="newGoodsItem" :to="'/productDetails/'+item.id" v-for="(item) in newGoodsList" :key="item.id">
           <img class="imgLazyload loadEnd" :src="item.list_pic_url" alt="imgLazyLoad" />
           <div class="newGoodsName">{{item.name}}</div>
           <div class="newGoodsPrice">￥{{item.retail_price}}</div>

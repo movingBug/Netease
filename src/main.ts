@@ -15,7 +15,7 @@ import store from './store/index'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 // require styles
 import 'swiper/dist/css/swiper.css'
-// import "@/assets/font/iconfont.css";
+import "@/assets/font/iconfont.css";
 
 Vue.use(VueAwesomeSwiper)
 
