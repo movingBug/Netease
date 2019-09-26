@@ -11,7 +11,7 @@
     <div class="commentwrap">
       <div class="titleline">
         <div class="titlename">精选留言</div>
-        <div class="titleicon" @click="gowrite(this)"><i class="iconfont icon-bianji"></i></div>
+        <div class="titleicon" @click="gowrite()"><i class="iconfont icon-bianji"></i></div>
       </div>
       <div class="commentList">
           <div class="commentListItem" v-for="item in commentData" :key="item.id">
@@ -58,8 +58,8 @@ export default {
     goback(){
       this.$router.go(-1)
     },
-    gowrite(id){
-      this.$router.push({name:"topiccomment",params:{id}})
+    gowrite(){
+      this.$router.push({name:"topiccomment"})
     },
     async _getDatacomment(id){
         const reset = await getDatacomment(id)
