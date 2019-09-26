@@ -6,7 +6,7 @@
  * @LastEditors: sueRimn
  * @LastEditTime: 2019-09-24 15:49:41
  */
-import { login } from '../../services';
+import { login } from '../../services/index';
 let user = '';
 if (window.localStorage.getItem('username')) {
     user = window.localStorage.getItem('username') + '';
@@ -30,6 +30,7 @@ export default {
     actions: {
         async logintest(action: any, params: any) {
             const result = await login(params);
+            console.log(result,'res----------')
             if (result.data.sessionKey) {
                 window.localStorage.setItem('sessionKey', result.data.sessionKey);
                 window.localStorage.setItem('username', result.data.mobile);

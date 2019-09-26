@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <template>
   <div class="firstPage">
     <Swiper :options="swiperOption" :list="lists" />
@@ -109,7 +108,7 @@ import { mapState, mapMutations, mapActions } from "vuex";
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 import Swiper from "../../../components/swiper/index.vue";
 
-require("swiper/dist/css/swiper.css");
+// require("swiper/dist/css/swiper.css");
 
 export default Vue.extend({
   name: "First",
@@ -633,20 +632,3 @@ export default Vue.extend({
   }
 }
 </style>
-=======
-<template>
-  <div class="home">
-     this is first page
-  </div>
-</template>
-
-<script lang="ts">
-import Vue from 'vue'
-
-export default Vue.extend({
-  name: 'First',
-  components: {
-  }
-})
-</script>
->>>>>>> fb747870daa7fe444d1999475d3fefda0139ae8c

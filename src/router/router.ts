@@ -49,7 +49,6 @@ export default new Router({
       path: '/star',
       name: 'star',
       component: () => import('../views/home/my/star/index.vue')
-      // component:() => import('../views/login/index.vue')
     },
     {
       path: '/home',

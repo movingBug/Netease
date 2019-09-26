@@ -1,11 +1,4 @@
-<!--
- * @Descripttion: 
- * @version: 
- * @Author: sueRimn
- * @Date: 2019-09-23 15:02:34
- * @LastEditors: sueRimn
- * @LastEditTime: 2019-09-23 19:32:25
- -->
+
 <template>
   <div class="loginBox">
     <div class="logo">
@@ -25,7 +18,7 @@
   </div>
 </template>
 <script>
-import { createNamespacedHelpers } from "vuex";
+// import { createNamespacedHelpers } from "vuex";
 import { mapState } from "vuex";
 export default {
   name: "login",

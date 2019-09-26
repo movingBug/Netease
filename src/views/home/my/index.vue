@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!--
  * @Descripttion: 
  * @version: 
@@ -147,20 +146,3 @@ export default Vue.extend({
 <style lang="scss">
 @import url("./index.scss");
 </style>
-=======
-<template>
-  <div>
-     this is 我的 page
-  </div>
-</template>
-
-<script lang="ts">
-import Vue from 'vue'
-
-export default Vue.extend({
-  name: 'My',
-  components: {
-  }
-})
-</script>
->>>>>>> fb747870daa7fe444d1999475d3fefda0139ae8c
