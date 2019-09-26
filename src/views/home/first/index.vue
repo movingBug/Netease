@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <template>
   <div class="firstPage">
     <Swiper :options="swiperOption" :list="lists" />
@@ -632,3 +633,20 @@ export default Vue.extend({
   }
 }
 </style>
+=======
+<template>
+  <div class="home">
+     this is first page
+  </div>
+</template>
+
+<script lang="ts">
+import Vue from 'vue'
+
+export default Vue.extend({
+  name: 'First',
+  components: {
+  }
+})
+</script>
+>>>>>>> fb747870daa7fe444d1999475d3fefda0139ae8c

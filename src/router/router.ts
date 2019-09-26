@@ -1,10 +1,18 @@
 /*
+<<<<<<< HEAD
  * @Descripttion:
  * @version:
  * @Author: sueRimn
  * @Date: 2019-09-23 15:02:34
  * @LastEditors: sueRimn
  * @LastEditTime: 2019-09-25 14:57:34
+=======
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2019-09-23 14:46:00
+ * @LastEditTime: 2019-09-25 10:08:59
+ * @LastEditors: Please set LastEditors
+>>>>>>> fb747870daa7fe444d1999475d3fefda0139ae8c
  */
 import Vue from 'vue'
 import Router from 'vue-router'
@@ -13,12 +21,16 @@ Vue.use(Router)
 
 export default new Router({
   mode: 'history',
+<<<<<<< HEAD
   linkActiveClass: 'active',
+=======
+>>>>>>> fb747870daa7fe444d1999475d3fefda0139ae8c
   base: process.env.BASE_URL,
   routes: [
     {
       path: '/',
       name: 'login',
+<<<<<<< HEAD
       component: () => import('../views/login/index.vue')
     },
     {
@@ -49,6 +61,9 @@ export default new Router({
       path: '/star',
       name: 'star',
       component: () => import('../views/home/my/star/index.vue')
+=======
+      component:() => import('../views/login/index.vue')
+>>>>>>> fb747870daa7fe444d1999475d3fefda0139ae8c
     },
     {
       path: '/home',
@@ -56,6 +71,7 @@ export default new Router({
       component: () => import('../views/home/index.vue'),
       children: [
         {
+<<<<<<< HEAD
           path: '/home',
           redirect: '/home/first'
         },
@@ -65,6 +81,16 @@ export default new Router({
           name: 'first',
           component: () => import('../views/home/first/index.vue'),
           children: []
+=======
+          path: '/home/first',
+          name: 'first',
+          component: () => import('../views/home/first/index.vue')
+        },
+        {
+          path: '/home',
+          name: 'first',
+          component: () => import('../views/home/first/index.vue')
+>>>>>>> fb747870daa7fe444d1999475d3fefda0139ae8c
         },
         {
           path: '/home/special',
@@ -74,7 +100,11 @@ export default new Router({
         {
           path: '/home/classify',
           name: 'classify',
+<<<<<<< HEAD
           component: () => import('../views/home/classify/index.vue')
+=======
+          component: () => import('../views/home/classify/index.vue'),
+>>>>>>> fb747870daa7fe444d1999475d3fefda0139ae8c
         },
         {
           path: '/home/shop',
@@ -86,6 +116,7 @@ export default new Router({
           name: 'my',
           component: () => import('../views/home/my/index.vue')
         }
+<<<<<<< HEAD
       ]
     },
     {
@@ -109,5 +140,23 @@ export default new Router({
       name: 'topicDetail',
       component: () => import('../views/home/first/topicDetail/index.vue')
     }
+=======
+        
+      ]
+    },
+    {
+      path: '/search',
+      name: 'search',
+      component: () => import('../views/search/index.vue')
+    },{
+      path: '/home/classify/detail',
+      name: 'detail',
+      component: () => import('../views/home/classify/datail/index.vue')
+    },{
+      path: '/home/classify/detail/product',
+      name: 'product',
+      component: () => import('../views/home/classify/datail/productdetail/index.vue')
+    },
+>>>>>>> fb747870daa7fe444d1999475d3fefda0139ae8c
   ]
 })
