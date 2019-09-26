@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-09-23 19:43:48
- * @LastEditTime: 2019-09-26 09:14:10
+ * @LastEditTime: 2019-09-26 16:35:07
  * @LastEditors: Please set LastEditors
  */
 import Vue from 'vue'
@@ -23,7 +23,10 @@ const store = new Vuex.Store({
       hotlist:[],
       historylist:[],
       title:'',
-      searchlist:[]
+      searchlist:[],
+      id:0,
+      ind:0,
+      
     },
     mutations: {
        setclass(obj,a){
@@ -36,6 +39,8 @@ const store = new Vuex.Store({
        setlist(old,newval){
         old.list=newval.list;
         old.arr=newval.arr;
+        old.id=newval.id;
+        old.ind=newval.ind;
        },
        setgoods(old,newval){
          old.goods=newval.goods;
@@ -52,7 +57,11 @@ const store = new Vuex.Store({
        },
        setsearchlist(old,newval){
           old.searchlist=newval.list;
-       }
+       },
+       setindex(old,newval){
+           old.ind=newval.ind;
+       },
+       
     },
     actions:{
          getclassify(context){
@@ -72,7 +81,7 @@ const store = new Vuex.Store({
                
            })
         },
-        getclass(context,id){
+        getclass(context,{id,ind}){
           request.get('/goods/category',{
                 params:{id}
             }).then(res=>{
@@ -80,9 +89,8 @@ const store = new Vuex.Store({
                     let arr=[]
                     res.data.data.brotherCategory.map(item=>{
                         arr.push({'label':item.name,id:item.id});
-                     })
-                   
-                    context.commit('setlist',{list:res.data.data.brotherCategory,arr})
+                    })
+                    context.commit('setlist',{list:res.data.data.brotherCategory,arr,id,ind})
                  }
              })
         },
@@ -142,15 +150,18 @@ const store = new Vuex.Store({
                 params:val
             }).then(res=>{
                 if(res.data.errno===0){
-                 
-                    context.commit('setsearchlist',{list:res.data.data.data})
+                  context.commit('setsearchlist',{list:res.data.data.data})
                 }
                 
             })
         },
         clearsearch(context){
            context.commit('setsearchlist',{list:[]})
+        },
+        setind({commit},id){
+           commit('setindex',{ind:id})
         }
+       
     }
   })
   export default store;

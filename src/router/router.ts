@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-09-23 14:46:00
- * @LastEditTime: 2019-09-25 10:08:59
+ * @LastEditTime: 2019-09-26 14:10:29
  * @LastEditors: Please set LastEditors
  */
 import Vue from 'vue'
@@ -62,11 +62,11 @@ export default new Router({
       name: 'search',
       component: () => import('../views/search/index.vue')
     },{
-      path: '/home/classify/detail',
+      path: '/home/classify/detail/:id/:ind',
       name: 'detail',
       component: () => import('../views/home/classify/datail/index.vue')
     },{
-      path: '/home/classify/detail/product',
+      path: '/home/product/:id',
       name: 'product',
       component: () => import('../views/home/classify/datail/productdetail/index.vue')
     },

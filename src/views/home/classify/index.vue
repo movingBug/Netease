@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-09-23 14:42:20
- * @LastEditTime: 2019-09-25 10:09:06
+ * @LastEditTime: 2019-09-26 10:51:20
  * @LastEditors: Please set LastEditors
  -->
 <template>
@@ -31,7 +31,7 @@
             <h3>---{{product.name}}----</h3>
             <!-- 商品列表 -->
             <div class='allproduct'>
-                   <dl  v-for='(citem) in product.subCategoryList' :key='citem.id' @click='()=>todetail(citem.id)'>
+                   <dl  v-for='(citem,index) in product.subCategoryList' :key='citem.id' @click='()=>todetail(citem.id,index)'>
                    <dt>
                      <img :src="citem.wap_banner_url" alt="">
                    </dt>
@@ -66,7 +66,7 @@ export default Vue.extend({
   },
  
   computed:{
-     ...mapState(['leftlist','product','arr'])
+     ...mapState(['leftlist','product'])
   },
 
   methods:{
@@ -75,9 +75,9 @@ export default Vue.extend({
       this.$router.push('/search')
        // console.log(e.keyCode,this.serchval);
     },
-   async todetail(id){
-      await this.getclass(id);
-      this.$router.history.push('/home/classify/detail');
+   async todetail(id,ind){
+      await this.getclass({id,ind});
+      this.$router.history.push('/home/classify/detail/'+id+'/'+ind);
     },
     changeind(id,ind){
       this.ind=ind;

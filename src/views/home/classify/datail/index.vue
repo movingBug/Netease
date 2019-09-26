@@ -2,11 +2,13 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-09-24 11:49:23
- * @LastEditTime: 2019-09-25 17:12:35
+ * @LastEditTime: 2019-09-26 17:06:30
  * @LastEditors: Please set LastEditors
  -->
 <template>
     <div class='probox'>
+        <p @click="back">返回</p>
+      
 <ly-tab
     v-model="selectedId"
     :items="arr"
@@ -32,33 +34,42 @@ import LyTab from 'ly-tab';
 Vue.use(LyTab)
 export default Vue.extend({
     data(){
-        return({
-        selectedId: -1,
+    return({
+        selectedId:0,
         options: {
         activeColor: '#1d98bd'
        },
     })
     },
     computed:{
-       ...mapState(['arr','goods']),
+       ...mapState(['arr','goods','ind','id']),
     },
    
     methods:{ 
-      ...mapActions(['getgoods','getgoodsdetail']),
+      ...mapActions(['getgoods','getgoodsdetail','setind','getclass']),
     change(){
-         
-          this.arr.length?this.getgoods(this.arr[this.selectedId].id):this.getgoods(1008002)
-         
-      },
+        let id=this.arr[this.selectedId].id || this.$router.params.id;
+         this.getgoods(id)
+    },
       togooddatail(id){
-        
         this.getgoodsdetail(id);
-        this.$router.push('/home/classify/detail/product');
+        this.setind(this.selectedId);
+        this.$router.push('/home/product/'+id);
+        
+      },
+      back(){
+          this.$router.push('/home/classify');
       }
     },
     mounted(){
-        this.selectedId=0;
-         
+        this.getclass({id:this.$route.params.id,ind:0})
+        this.getgoods(this.$route.params.id); 
+        this.selectedId=this.$route.params.ind*1;
+        if(!localStorage.getItem('detailid' && localStorage.getItem('detailid')!==this.$route.params.id))
+        {
+          localStorage.setItem('detailid',this.$route.params.id);
+        }
+    
     }
 })
 </script>
@@ -68,6 +79,10 @@ export default Vue.extend({
        height:100%;
        display: flex;
        flex-direction:column;
+   }
+   .probox>p{
+       height:.4rem;
+       line-height:.4rem;
    }
    .probox h4{
      widows: 100%;
