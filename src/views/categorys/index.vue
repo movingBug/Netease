@@ -1,3 +1,11 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: sueRimn
+ * @Date: 2019-09-27 15:10:34
+ * @LastEditors: sueRimn
+ * @LastEditTime: 2019-09-27 15:10:34
+ -->
 <template>
   <div class="categoryPage">
     <div class="cateHeader">
@@ -106,7 +114,7 @@ export default {
   }
 };
 </script>
-<style scoped lang="scss">
+<style lang="scss">
 .categoryPage {
   min-height: 100%;
   width: 100%;

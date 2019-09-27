@@ -6,7 +6,7 @@
  * @LastEditors: sueRimn
  * @LastEditTime: 2019-09-27 15:13:42
  */
-import request from '../utils/request';
+import request from '@/utils/request';
 
 // 登录
 export function login(params: any) {

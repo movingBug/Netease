@@ -1,25 +1,24 @@
 <!--
- * @Descripttion: 
- * @version: 
- * @Author: sueRimn
- * @Date: 2019-09-25 07:46:42
- * @LastEditors: sueRimn
- * @LastEditTime: 2019-09-25 14:32:27
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2019-09-23 15:17:54
+ * @LastEditTime: 2019-09-23 16:35:38
+ * @LastEditors: Please set LastEditors
  -->
 <template>
   <div class="home">
     <div class="homeMain">
-      <router-view />
+       <router-view/>
     </div>
     <div class="homeFoot">
       <div class="foot-item">
-        <router-link to="/home/first" tag="span" active-class="active">首页</router-link>
+        <router-link to="/home/first" tag="span">首页</router-link>
       </div>
       <div class="foot-item">
-        <router-link to="/home/special" tag="span">专题</router-link>
+        <router-link to="/home/special"  tag="span">专题</router-link>
       </div>
       <div class="foot-item">
-        <router-link to="/home/classify" tag="span">分类</router-link>
+        <router-link to="/home/classify"  tag="span">分类</router-link>
       </div>
       <div class="foot-item">
         <router-link to="/home/shop" tag="span">购物车</router-link>
@@ -36,27 +35,14 @@ import Vue from "vue";
 
 export default Vue.extend({
   name: "home",
-  components: {},
-  methods: {
-    getlocationID() {
-      let ID = window.localStorage.getItem("sessionKey");
-      if (!ID) {
-        this.$router.replace("/");
-      }
-    }
-  },
-  mounted() {
-    this.getlocationID();
-  }
+  components: {}
 });
 </script>
 <style lang="scss">
-// @import '../assets/font/iconfont.css';
 
-html,
-body {
-  width: 100%;
-  height: 100%;
+html,body{
+   width: 100%;
+   height: 100%;
 }
 
 .home {
@@ -68,7 +54,7 @@ body {
 
 .homeMain {
   flex: 1;
-  overflow: auto;
+  overflow:auto; 
 }
 
 .homeFoot {
@@ -85,10 +71,8 @@ body {
   height: 100%;
   text-align: center;
   line-height: 0.5rem;
+  border-top:solid 1px #ccc;
 }
 
-.homeFoot .foot-item .active {
-  color: #09f;
-  border-top:1px solid #ccc; 
-}
+
 </style>

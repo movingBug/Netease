@@ -1,3 +1,11 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: sueRimn
+ * @Date: 2019-09-27 15:10:34
+ * @LastEditors: sueRimn
+ * @LastEditTime: 2019-09-27 15:10:34
+ */
 import { getData, TabData, catalog,goodsList} from '../../services/index'
 
 let state = {
@@ -10,7 +18,6 @@ let state = {
   topicList: [],
   // data: JSON.parse(window.localStorage.getItem('data')),
   currentCategory: {},
-  
   selectedId: 0
 }
 

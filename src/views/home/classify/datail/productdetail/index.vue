@@ -4,39 +4,55 @@
  * @Author: sueRimn
  * @Date: 2019-09-27 15:10:34
  * @LastEditors: sueRimn
- * @LastEditTime: 2019-09-27 16:23:50
+ * @LastEditTime: 2019-09-27 19:05:04
  -->
 <template>
     <div class='product'>
     <p @click="back">返回🔙</p> 
-    <div class="swiper-container" v-if='gooddetail.gallery'>
-     <div class="swiper-wrapper">
-        <div class="swiper-slide" v-for='item in gooddetail.gallery' :key='item.id'><img :src="item.img_url" alt=""></div>
-    </div>
+    <div>
+        {{Boolean(gooddetail.info.name,gooddetail.info.name)}}
+        <h3 v-if='gooddetail.info'>{{gooddetail.info.name}}</h3>
+        <!-- 轮播图 -->
+     <div class="swiper-container">
+      <div class="swiper-wrapper">
+     <div class="swiper-slide" v-for='item in gooddetail.gallery' :key='item.id'><img :src="item.img_url" alt="" /></div>
+     </div>
     <!-- 如果需要分页器 -->
-     <div class="swiper-pagination"></div>
+      <div class="swiper-pagination"></div>
     </div>
     <div class='select' @click="showmark">选择规则</div>
+  <!-- 常温问题 -->
     <div class='question'>
         <h4>---常见问题分析-----</h4>
         <div v-for='(item,index) in gooddetail.issue' :key='index'>
              <p>问:{{item.question}}</p>
              <p>答:{{item.answer}}</p>
         </div>
+       
     </div>
+      <div v-if='gooddetail.info'><img :src="gooddetail.info.primary_pic_url" alt=""></div>
+       <div v-if='gooddetail.info'><img :src="gooddetail.info.list_pic_url" alt=""></div>
+
+      <!-- 遮罩层 -->
+       
+    </div>
+   
     <div class="mark" v-show="flag">
         <div class='selectoption'>
-            {{gooddetail.attribute}}
-            <p v-if='gooddetail.attribute'>
+          
+            <!-- <p v-if='gooddetail.attribute[2].name'>
                 <span>{{gooddetail.attribute[2].name}}</span><span>{{gooddetail.attribute[2].value}}</span>
             </p>
-             <p v-if='gooddetail.attribute'>
+             <p v-if='gooddetail.attribute[3].name'>
                 <span>{{gooddetail.attribute[3].name}}</span><span :class="cla" @click="changecls">{{gooddetail.attribute[3].value}}</span>
-            </p>
+            </p> -->
             <div><span @click="hide">取消</span><span @click="hide">确定</span></div>
             </div>
     </div>
-    .
+    
+  
+    
+    
     </div>
 </template>
 <script lang="">
@@ -49,16 +65,27 @@ export default Vue.extend({
         return({
             flag:0,
             cla:'active'
+           
         })
     },
     computed:{
         ...mapState({
              gooddetail: state => state.getGoods.gooddetail,
+             id:state=>state.getGoods.id
         })
     },
     methods:{
+        ...mapActions(['getgoodsdetail']),
         back(){
-            this.$router.push('/home/classify/detail')
+            let a='';
+            if(this.id===0){
+               a=localStorage.getItem('detailid');
+               this.$router.push('/home/classify/detail/'+a+'/0')
+            }else{
+                this.$router.push('/home/classify/detail/'+this.id+'/0')
+            }
+           
+            
         },
         showmark(){
             this.flag=1;
@@ -78,13 +105,18 @@ export default Vue.extend({
         delay:1000
     },
   
-    pagination: {
+     pagination: {
       el: '.swiper-pagination',
-    },
+     },
     
-  })      
-    }
+   })
+   if(this.id===0){
+     this.getgoodsdetail(this.$route.params.id);
+   }
+   
+  }
 })
+
 </script>
 <style lang="scss">
 .product{
@@ -93,6 +125,27 @@ export default Vue.extend({
     position: relative;
     display: flex;
     flex-direction:column;
+}
+.product>div{
+    width:100%;
+    flex:1;
+    height:auto;
+}
+.product>div{
+    display:block;
+    width:100%;
+    height:auto;
+    flex:1;
+    overflow-y:auto;
+}
+.product>div>div{
+    width:100%;
+    height:auto;
+}
+.product>div>div>img{
+    width:100%;
+    height:auto;
+    display:block;
 }
 .product>p{
     width:100%;

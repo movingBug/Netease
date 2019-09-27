@@ -1,3 +1,11 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: sueRimn
+ * @Date: 2019-09-27 19:31:46
+ * @LastEditors: sueRimn
+ * @LastEditTime: 2019-09-27 19:31:46
+ -->
 <template>
   <div class="firstPage">
     <Swiper :options="swiperOption" :list="lists" />
@@ -30,7 +38,12 @@
       <div class="newGoodsTitle">新品首发</div>
       <div class="newGoodsWrap" v-if="newGoodsList">
         <!-- 这个需要改跳路由的 -->
-        <router-link class="newGoodsItem" :to="'/productDetails/'+item.id"   v-for="(item) in newGoodsList" :key="item.id">
+        <router-link
+          class="newGoodsItem"
+          :to="'/productDetails/'+item.id"
+          v-for="(item) in newGoodsList"
+          :key="item.id"
+        >
           <img class="imgLazyload loadEnd" :src="item.list_pic_url" alt="imgLazyLoad" />
           <div class="newGoodsName">{{item.name}}</div>
           <div class="newGoodsPrice">￥{{item.retail_price}}</div>
@@ -40,7 +53,12 @@
     <div class="hotGoodsBox">
       <div class="hotGoodsTitle">人气推荐</div>
       <div class="hotGoodsWrap" v-if="hotGoodsList">
-        <router-link class="hotGoodsItem" :to="'/productDetails/'+item.id" v-for="(item) in hotGoodsList" :key="item.id">
+        <router-link
+          class="hotGoodsItem"
+          :to="'/productDetails/'+item.id"
+          v-for="(item) in hotGoodsList"
+          :key="item.id"
+        >
           <img class="imgLazyload loadEnd" :src="item.list_pic_url" alt="imgLazyLoad" />
           <div class="hotGoodsInfos">
             <div class="hotGoodsName">{{item.name}}</div>
@@ -53,12 +71,7 @@
     <div class="topGoodsBox">
       <div class="topGoodsTitle">专题精选</div>
       <div class="topGoodsWrap">
-        <swiper
-          :options="swiperTopic"
-          class="swiper-topic"
-          ref="mySwiper"
-          v-if="topicList"
-        >
+        <swiper :options="swiperTopic" class="swiper-topic" ref="mySwiper" v-if="topicList">
           <swiper-slide v-for="(item) in topicList" :key="item.id" id="swiper-content-slide">
             <router-link :to="'/topicDetail/'+item.id" class="topGoodItem">
               <img :src="item.item_pic_url" alt="no" />

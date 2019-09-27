@@ -1,4 +1,12 @@
-import { goodsList, TabData,goodsItem } from '../../services/index'
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: sueRimn
+ * @Date: 2019-09-27 15:10:34
+ * @LastEditors: sueRimn
+ * @LastEditTime: 2019-09-27 19:08:11
+ */
+import { goodsList, TabData,goodsItem } from '@/services/index';
 
 let state = {
   data: {},
