@@ -4,7 +4,7 @@
  * @Author: sueRimn
  * @Date: 2019-09-26 15:35:40
  * @LastEditors: sueRimn
- * @LastEditTime: 2019-09-26 21:39:04
+ * @LastEditTime: 2019-09-27 11:57:58
  -->
 <template>
   <div class="wrap">
@@ -52,9 +52,13 @@
             <div class="cartGoodEditWrap">
               <div class="price">￥{{item.market_price}}</div>
               <div class="countOp">
-                <div>-</div>
-                <div class="num">0</div>
-                <div>+</div>
+                <div
+                  @click="clickAddReducer('reducer',item.product_id,item.id,item.goods_id,item.number)"
+                >-</div>
+                <div class="num" v-text="item.number"></div>
+                <div
+                  @click="clickAddReducer('add',item.product_id,item.id,item.goods_id,item.number)"
+                >+</div>
               </div>
             </div>
           </div>
@@ -75,8 +79,8 @@
           @click="clickAll"
         />
       </div>
-      <div class="rightCheck" v-if="!signPattern">已选({{num}})￥()</div>
-      <div class="rightCheck" v-else>已选({{num}})</div>
+      <div class="rightCheck" v-if="!signPattern">已选({{this.num}})￥({{this.totalMoney}})</div>
+      <div class="rightCheck" v-else>已选({{this.allSingle}})</div>
       <div class="sign" v-text="initSign" @click="clickChange"></div>
       <div class="changeBtn" v-text="initDown" @click="clickShow"></div>
     </div>
@@ -95,7 +99,6 @@ export default Vue.extend({
       isShow: false,
       initSign: "编辑",
       initDown: "下单",
-      num: 0,
       MaskIsShow: false,
       signPattern: false
     };
@@ -111,6 +114,25 @@ export default Vue.extend({
       });
       this.isCheckLength();
     },
+    clickAddReducer(type, productId, id, goodsId, number) {
+      if (type === "add") {
+        let obj = {
+          productId,
+          id,
+          goodsId,
+          number: Number(number) + 1
+        };
+        this.$store.dispatch("shopcar/getNewNumber", obj);
+      } else {
+        let obj = {
+          productId,
+          id,
+          goodsId,
+          number: Number(number) - 1
+        };
+        this.$store.dispatch("shopcar/getNewNumber", obj);
+      }
+    },
     clickAll() {
       this.isShow = !this.isShow;
       let isChecked = 0;
@@ -124,14 +146,12 @@ export default Vue.extend({
           isChecked,
           productIds: arr.join(",")
         });
-        this.num = this.carList.length;
       } else {
         isChecked = 0;
         this.$store.dispatch("shopcar/getCarStatus", {
           isChecked,
           productIds: arr.join(",")
         });
-        this.num = 0;
       }
     },
     isCheckLength() {
@@ -139,7 +159,6 @@ export default Vue.extend({
         let arr = this.carList.filter(item => {
           return item.checked === 1;
         });
-        this.num = arr.length;
       }
     },
     clickChange() {
@@ -161,18 +180,33 @@ export default Vue.extend({
       }
     },
     clickShow(e) {
-      this.MaskIsShow = true;
-      this.$store.commit("mine/changeProductName", {
-        name: e.target.innerHTML
-      });
-      setTimeout(() => {
-        this.MaskIsShow = false;
-      }, 2000);
+      if (e.target.innerHTML === "下单") {
+        this.MaskIsShow = true;
+        this.$store.commit("mine/changeProductName", {
+          name: e.target.innerHTML
+        });
+        setTimeout(() => {
+          this.MaskIsShow = false;
+        }, 2000);
+      } else {
+        let arr = [];
+        this.carList.forEach(item => {
+          if (item.checked === 1) {
+            arr.push(item.product_id);
+          }
+        });
+        this.$store.dispatch("shopcar/deleteItem", {
+          productIds: arr.join(",")
+        });
+      }
     }
   },
   computed: mapState({
     carList: state => state.shopcar.carList,
-    shopcarCount: state => state.mine.shopcarCount
+    shopcarCount: state => state.mine.shopcarCount,
+    num: state => state.shopcar.num,
+    totalMoney: state => state.shopcar.totalMoney,
+    allSingle: state => state.shopcar.allSingle
   }),
   mounted() {
     this.initGetData();

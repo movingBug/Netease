@@ -4,7 +4,7 @@
  * @Author: sueRimn
  * @Date: 2019-09-23 15:56:55
  * @LastEditors: sueRimn
- * @LastEditTime: 2019-09-26 17:31:26
+ * @LastEditTime: 2019-09-27 11:30:28
  */
 import request from '../utils/request';
 
@@ -111,4 +111,12 @@ export function getShopcarList() {
 // 更改购物车状态
 export function changeItemStatus(params: any) {
     return request.post('/cart/checked', params);
+}
+// 更新购物车商品个数
+export function changeShopcarNum(params: any) {
+    return request.post('/cart/update', params)
+}
+// 删除购物车所选商品
+export function deleteShopItem(params: any) {
+    return request.post('/cart/delete', params);
 }

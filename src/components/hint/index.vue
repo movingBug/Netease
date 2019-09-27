@@ -4,7 +4,7 @@
  * @Author: sueRimn
  * @Date: 2019-09-26 09:20:34
  * @LastEditors: sueRimn
- * @LastEditTime: 2019-09-26 21:33:36
+ * @LastEditTime: 2019-09-27 10:44:18
  -->
 <template>
   <div class="hint">
@@ -38,6 +38,7 @@ export default {
   width: 0.4rem;
   font-size: .4rem;
   height: 0.3rem;
+  color:white;
 }
 
 .hint div {
