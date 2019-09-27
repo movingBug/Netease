@@ -1,3 +1,11 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: sueRimn
+ * @Date: 2019-09-27 15:10:34
+ * @LastEditors: sueRimn
+ * @LastEditTime: 2019-09-27 16:23:50
+ -->
 <template>
     <div class='product'>
     <p @click="back">返回🔙</p> 
@@ -34,8 +42,7 @@
 <script lang="">
 import Vue from 'vue'
 import Swiper from 'swiper';
-
-import {mapState} from 'vuex'
+import { mapState } from 'vuex';
 
 export default Vue.extend({
     data(){
@@ -79,14 +86,13 @@ export default Vue.extend({
     }
 })
 </script>
-<style scoped lang="scss">
+<style lang="scss">
 .product{
     widows: 100%;
     height:100%;
     position: relative;
     display: flex;
     flex-direction:column;
-    /* overflow-y:auto; */
 }
 .product>p{
     width:100%;
