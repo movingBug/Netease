@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-09-24 19:27:11
- * @LastEditTime: 2019-09-26 17:28:38
+ * @LastEditTime: 2019-09-26 20:27:38
  * @LastEditors: Please set LastEditors
  -->
 <template>
@@ -74,14 +74,15 @@ export default Vue.extend({
     methods:{
         ...mapActions(['getgoodsdetail']),
         back(){
-            let a;
+            let a='';
             if(this.id===0){
-               
-               
-                 a=localStorage.getItem('detailid');
+               a=localStorage.getItem('detailid');
+               this.$router.push('/home/classify/detail/'+a+'/0')
+            }else{
+                this.$router.push('/home/classify/detail/'+this.id+'/0')
             }
            
-            this.$router.push('/home/classify/detail/'+a+'/0')
+            
         },
         showmark(){
             this.flag=1;
