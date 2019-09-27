@@ -22,7 +22,7 @@ let mutations = {
   },
 
   relatedFn (state: any, payload: any) {
-    console.log('payload-----',payload)
+    // console.log('payload-----',payload)
     state.relate = payload
   }
 }
@@ -46,9 +46,10 @@ let actions = {
   },
 
   // related
+  // 获取相关专题
   async Related ({ commit }: any, payload: any) {
     const result = await related(payload)
-    console.log('Related-----', result.data)
+    
     commit('relatedFn', result.data)
   }
 }

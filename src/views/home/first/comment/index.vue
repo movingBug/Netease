@@ -2,8 +2,8 @@
   <div class="commentPage">
     <Header :data="data" />
     <div class="commentMain">
-      <div class="commentList" v-if="commentList">
-        <div class="commentItem" v-for="item in commentList" :key="item.id">
+      <div class="commentList" v-if="commentItem">
+        <div class="commentItem" v-for="item in commentItem" :key="item.id">
           <div class="userInfo">
             <div>匿名用户</div>
             <div>{{item.add_time}}</div>
@@ -44,7 +44,7 @@ export default {
     })
   },
   created() {
-    console.log(this.$route.params);
+    // console.log(this.$route.params);
   },
   mounted() {
     this.commentList({
