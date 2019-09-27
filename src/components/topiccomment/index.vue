@@ -6,16 +6,23 @@
               <span></span>
         </div>
         <div class="textAreaContent">
-          <textarea :ref="message"
+          <textarea class="inputArea"
             type="text" 
-            :value="value"  
-            @input="updateValue" 
+            v-model="val" 
+            @input="InputData" 
             placeholder="请输入留言内容"
-            maxlength="80px"
+            maxlength="80"
             ></textarea>
-
+            <span>{{text.length}}/80</span>
         </div>
-        <button class="btn" @click="sendData()">留言</button>
+       <div class="buttons">
+            <div class="clean" v-if="text!==''" @click="cleanClick">
+                <span>清空</span>
+            </div>
+            <div class="lange" @click="langeClick">
+                <span>留言</span>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -24,30 +31,30 @@ import "../../fonts/iconfont.css"
     export default {
         data(){
             return{
-                content:""
+                  text:''
             }
         },
-        props: {
-            value: {
-                type: String,
-                default: ''
-            }
+        mounted(){
+            const id = this.$route.params.id;
         },
         methods:{
             goback(){
                 this.$router.go(-1)
             },
-            updateValue: function (event) {
-                this.$emit('input', event.target.value)
+            InputData(e){
+                this.text = e.target.value
             },
-            focus: function () {
-                this.$refs.message.focus()
+            cleanClick(){
+                this.text=''
+            },
+            langeClick(){
+                this.$router.go(-1)
             }
         }
     }
 </script>
 
-<style>
+<style lang="scss" scoped>
 html {
     font-size: calc(100/375*100vw)
 }
@@ -84,15 +91,41 @@ html {
   height: 1.6rem;
   outline: none;
 }
-.btn{
-    border: none;
-    outline: none;
-    background: #41cffd;
-    color: #fff;
-    padding: .05rem .2rem;
+.textAreaContent span{
+    font-size: .14rem;
     position: absolute;
-    right: .07rem;
-    margin-top: .02rem;
-    border-radius: .5rem;
+    bottom: 0;
+    right: .1rem;
+}
+.buttons{
+    width: 100%;
+    height: auto;
+    padding: .1rem .2rem;
+    display: flex;
+    justify-content: space-between;
+    div{
+        flex: 5;
+        cursor: pointer;
+        span{
+            display: inline-block;
+            width: 1rem;
+            height: .3rem;
+            line-height: .3rem;
+            padding: 0 .15rem;
+            border-radius: 5px;
+            text-align: center;
+            font-size: .14rem
+        }
+    }
+    .clean>span{
+            background-color:#108ee9;
+            color: #fff;
+            float: left;
+    }
+    .lange>span{
+        background-color: #108ee9;
+        color: #fff;
+        float: right;
+    }
 }
 </style>

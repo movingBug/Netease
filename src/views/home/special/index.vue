@@ -47,9 +47,9 @@ export default Vue.extend({
 })
 </script>
 <style>
-html {
-    font-size: calc(100/375*100vw)
-}
+  html {
+      font-size: calc(100/375*100vw)
+  }
   .list{
     width: 100%;
   }

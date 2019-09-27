@@ -23,6 +23,9 @@ export default Vue.extend({
 })
 </script>
 <style lang="scss" scoped>
+    html {
+      font-size: calc(100/375*100vw)
+    }
    .home{
      width: 100%;
      height: 100%;
@@ -36,10 +39,11 @@ export default Vue.extend({
 
    .homeFoot{
      width: 100%;
-     height: 50px;
+     height:.5rem;
      display:flex; 
      justify-content:center;
      align-items:center; 
+     font-size: .14rem;
    }
 
    .homeFoot>span{
@@ -48,7 +52,7 @@ export default Vue.extend({
       width: 100%;
       height: 100%;
       text-align:center; 
-      line-height:50px;
+      line-height:.5rem;
 
    }
 
