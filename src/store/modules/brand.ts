@@ -7,11 +7,9 @@ let state = {
 
 let mutations = {
     brandFn(state:any,payload:any){
-        // console.log('result------',JSON.parse(JSON.stringify(payload)))
         state.brand = payload
     },
     banList(state:any,payload:any){
-        // console.log('banList------',JSON.parse(JSON.stringify(payload)))
         state.branList = payload.data
     }
 }

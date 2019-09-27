@@ -6,7 +6,14 @@
         <span>奇趣分类</span>
         <span></span>
       </div>
-      <ly-tab v-model="selectedId.selectedId" :items="items" :options="options" @change="changeTab"></ly-tab>
+      <div v-if="items">
+        <ly-tab
+          v-model="selectedId.selectedId"
+          :items="items"
+          :options="options"
+          @change="changeTab"
+        ></ly-tab>
+      </div>
     </div>
     <div class="cateMain">
       <div class="categoryDetail" v-if="data.brotherCategory">
@@ -14,7 +21,7 @@
         <div>{{data.brotherCategory[selectedId.selectedId].front_name}}</div>
       </div>
       <div class="goodsListContant">
-        <div class="goodsListsWrap">
+        <div class="goodsListsWrap" v-if="goodList">
           <!-- 这个需要改跳路由的 -->
           <div
             class="goodsListRout"
@@ -39,7 +46,6 @@ import { mapState, mapMutations, mapActions } from "vuex";
 
 export default {
   data() {
-
     return {
       items: [],
       options: {
@@ -76,7 +82,7 @@ export default {
 
     ...mapActions({
       TabData: "category/TabData",
-      goodsList: "category/goodsList",
+      goodsList: "category/goodsList"
     }),
 
     changeTab(items) {
@@ -86,8 +92,8 @@ export default {
       // );
     },
 
-    goodsJurp(id){
-        this.$router.push(`/goods/${id}`)
+    goodsJurp(id) {
+      this.$router.push(`/goods/${id}`);
     }
   },
 
@@ -238,7 +244,6 @@ export default {
       white-space: nowrap;
       color: red;
     }
-
   }
 }
 </style>

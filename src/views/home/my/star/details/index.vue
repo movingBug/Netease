@@ -14,7 +14,7 @@
       <span class="right"></span>
     </header>
     <main>
-      <swiper :options="swiperOption" class="swiper-topic">
+      <swiper :options="swiperOption" class="swiper-topic" v-if="this.detailData.gallery">
         <swiper-slide
           v-for="(item) in this.detailData.gallery"
           :key="item.id"
@@ -44,7 +44,7 @@
           <span class="pledge">满88元免邮费</span>
         </li>
       </ul>
-      <div class="goodsMsgWrap">
+      <div class="goodsMsgWrap" v-if="this.detailData">
         <div class="goodsMsgWrapTitle" v-text="this.detailData.info.name"></div>
         <div class="goodsMsgWrapcont" v-text="this.detailData.info.goods_brief"></div>
         <div class="goodsMsgWrapMoney">￥{{this.detailData.info.retail_price}}</div>

@@ -161,7 +161,38 @@ export async function getindex(params:any) {
     })
 }
 
+// comment/list?valueId=314&typeId=1&size=10&page=1
+export async function comment(params:any) {
+    return await request.get('comment/list',{
+        params:{
+            valueId:params.id,
+            typeId:1,
+            page: params.page,
+            size: params.size
+        }
+    })
+}
 
+// commentList
+export async function commentList(params:any) {
+    return await request.get('comment/list',{
+        params:{
+            valueId:params.id,
+            typeId:1,
+            page: params.page,
+            size: params.size
+        }
+    })
+}
+
+// /topic/related
+export async function related(params:any) {
+    return await request.get('/topic/related',{
+        params:{
+           id:params
+        }
+    })
+}
 
 
 
