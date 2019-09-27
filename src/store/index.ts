@@ -4,12 +4,12 @@
  * @Author: sueRimn
  * @Date: 2019-09-23 15:59:48
  * @LastEditors: sueRimn
- * @LastEditTime: 2019-09-24 09:03:18
+ * @LastEditTime: 2019-09-27 15:13:01
  */
 import Vue from 'vue'
 import Vuex from 'vuex';
 import Logger from 'vuex/dist/logger'
-
+import shopcar from './modules/shopcar';
 import getGoods from "./modules/getGoods"
 import login from './modules/login';
 import mine from './modules/mine';
@@ -27,6 +27,7 @@ const store = new Vuex.Store({
         First,
         mine,
         category,
+        shopcar,
         brand,
         topic
     },
