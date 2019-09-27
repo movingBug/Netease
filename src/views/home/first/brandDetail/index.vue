@@ -13,7 +13,7 @@
           <router-link
             class="brandRout"
             tag="div"
-            to="/"
+            :to="'/productDetails/'+item.id"
             v-for="(val) in branList"
             :key="val.id"
           >

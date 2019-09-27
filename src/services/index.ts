@@ -4,7 +4,7 @@
  * @Author: sueRimn
  * @Date: 2019-09-23 15:56:55
  * @LastEditors: sueRimn
- * @LastEditTime: 2019-09-27 11:30:28
+ * @LastEditTime: 2019-09-27 15:13:42
  */
 import request from '../utils/request';
 
@@ -120,3 +120,97 @@ export function changeShopcarNum(params: any) {
 export function deleteShopItem(params: any) {
     return request.post('/cart/delete', params);
 }
+
+// 
+export function getclassify(){
+    return request.post('/catalog/index')
+}
+
+///catalog/current
+export async function getanother(params:any) {
+    return await request.get('/catalog/current',{
+        params:{id:params}
+    })
+}
+
+export async function getclass(params:any) {
+    return await request.get('/goods/category',{
+        params:{id:params}
+    })
+}
+
+export async function getgoods(params:any) {
+    return await request.get('/goods/list',{
+        params:{
+            categoryId:params,
+            page: 1,
+            size: 10
+        }
+    })
+}
+
+export async function getgoodsdetail(params:any) {
+    return await request.get('/goods/detail',{
+        params:{
+           id:params
+        }
+    })
+}
+
+export async function gethotsearch() {
+    return await request.get('/search/index')
+}
+
+export async function getfinddata(params:any) {
+    return await request.get('/search/helper',{
+        params:{
+            keyword:params
+        }
+    })
+}
+
+
+export async function getindex(params:any) {
+    return await request.get('/goods/list',{
+        params:{
+            params
+        }
+    })
+}
+
+// comment/list?valueId=314&typeId=1&size=10&page=1
+export async function comment(params:any) {
+    return await request.get('comment/list',{
+        params:{
+            valueId:params.id,
+            typeId:1,
+            page: params.page,
+            size: params.size
+        }
+    })
+}
+
+// commentList
+export async function commentList(params:any) {
+    return await request.get('comment/list',{
+        params:{
+            valueId:params.id,
+            typeId:1,
+            page: params.page,
+            size: params.size
+        }
+    })
+}
+
+// /topic/related
+export async function related(params:any) {
+    return await request.get('/topic/related',{
+        params:{
+           id:params
+        }
+    })
+}
+
+
+
+

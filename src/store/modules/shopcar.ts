@@ -4,7 +4,7 @@
  * @Author: sueRimn
  * @Date: 2019-09-26 16:01:40
  * @LastEditors: sueRimn
- * @LastEditTime: 2019-09-27 12:02:27
+ * @LastEditTime: 2019-09-27 14:07:58
  */
 import { getShopcarList, changeItemStatus, changeShopcarNum, deleteShopItem } from '@/services/index';
 export default {
@@ -25,20 +25,11 @@ export default {
             list.forEach((item: any) => {
                 if (item.checked) {
                     state.num += item.number;
-                    state.totalMoney += item.number * item.market_price
+                    state.totalMoney += item.number * item.market_price;
+                    state.allSingle + 1
                 }
             });
         },
-        changeAllSingle(state: any, { list }: any) {
-            state.allSingle = 0;
-            console.log(list)
-            list.forEach((item: any) => {
-                if (item.checked === 1) {
-                    state.allSingle + 1;
-                }
-            });
-            console.log(state.allSingle)
-        }
     },
     actions: {
         async getCarList(action: any) {
@@ -48,8 +39,7 @@ export default {
         async getCarStatus(action: any, payload: any) {
             const result = await changeItemStatus(payload);
             action.commit('addCarList', { list: result.data.cartList })
-            action.commit('changeNumWithTotalMoney', { list: result.data.cartList })
-            action.commit('changeAllSingle', { list: result.data.cartList })
+            action.commit('changeNumWithTotalMoney', { list: result.data.cartList });
         },
         async getNewNumber({ commit }: any, payload: any) {
             const result = await changeShopcarNum(payload);

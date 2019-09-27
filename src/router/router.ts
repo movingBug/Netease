@@ -110,6 +110,11 @@ export default new Router({
       component: () => import('../views/home/first/topicDetail/index.vue')
     },
     {
+      path: '/comment/:id',
+      name: 'comment',
+      component: () => import('../views/home/first/comment/index.vue')
+    },
+    {
       path: '/search',
       name: 'search',
       component: () => import('../views/search/index.vue')

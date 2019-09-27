@@ -45,7 +45,9 @@ export default Vue.extend({
         })
     },
     computed:{
-        ...mapState(['gooddetail'])
+        ...mapState({
+             gooddetail: state => state.getGoods.gooddetail,
+        })
     },
     methods:{
         back(){
