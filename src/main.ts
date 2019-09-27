@@ -15,6 +15,7 @@ import LyTab from 'ly-tab'
 // 引入轮播
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 // require styles
+import 'swiper/dist/css/swiper.css'
 // import "swip"
 import "@/assets/font/iconfont.css";
 
