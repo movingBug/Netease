@@ -4,7 +4,7 @@
  * @Author: sueRimn
  * @Date: 2019-09-23 15:56:55
  * @LastEditors: sueRimn
- * @LastEditTime: 2019-09-28 17:11:48
+ * @LastEditTime: 2019-09-28 19:01:37
  */
 import request from '../utils/request';
 
@@ -120,3 +120,98 @@ export function changeShopcarNum(params: any) {
 export function deleteShopItem(params: any) {
     return request.post('/cart/delete', params);
 }
+
+// 
+export function getclassify() {
+    return request.post('/catalog/index')
+}
+
+///catalog/current
+export async function getanother(params: any) {
+    return await request.get('/catalog/current', {
+        params: { id: params }
+    })
+}
+
+export function Getclass(params: any) {
+    console.log(params);
+    return request.get('/goods/category', {
+        params
+    })
+}
+
+export function getgoods(params: any) {
+    return request.get('/goods/list', {
+        params: {
+            categoryId: params.id,
+            page: 1,
+            size: 10
+        }
+    })
+}
+
+export function getgoodsdetail(params: any) {
+    return request.get('/goods/detail', {
+        params: {
+            id: params
+        }
+    })
+}
+
+export function gethotsearch() {
+    return request.get('/search/index')
+}
+
+export function getfinddata(params: any) {
+    return request.get('/search/helper', {
+        params: {
+            keyword: params
+        }
+    })
+}
+
+
+export async function getindex(params: any) {
+    return await request.get('/goods/list', {
+        params: {
+            params
+        }
+    })
+}
+
+// comment/list?valueId=314&typeId=1&size=10&page=1
+export function comment(params: any) {
+    return request.get('comment/list', {
+        params: {
+            valueId: params.id,
+            typeId: 1,
+            page: params.page,
+            size: params.size
+        }
+    })
+}
+
+// commentList
+export function commentList(params: any) {
+    return request.get('comment/list', {
+        params: {
+            valueId: params.id,
+            typeId: 1,
+            page: params.page,
+            size: params.size
+        }
+    })
+}
+
+// /topic/related
+export function related(params: any) {
+    return request.get('/topic/related', {
+        params: {
+            id: params
+        }
+    })
+}
+
+
+
+

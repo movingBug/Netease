@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-09-23 14:42:20
- * @LastEditTime: 2019-09-25 10:09:06
+ * @LastEditTime: 2019-09-27 15:11:31
  * @LastEditors: Please set LastEditors
  -->
 <template>
@@ -12,7 +12,7 @@
        <p @click='search'>请输入你要搜索的商品名</p>
     </div>
     <div class="product">
-      <div class="list">
+      <div class="list" v-if="leftlist">
         <ul>
           <li v-for='(item,index) in leftlist' :key='item.id'  :class='index==ind?"active":""' @click="changeind(item.id,index)">
             {{item.name}}
@@ -24,14 +24,14 @@
        
           <div>
             <!-- 头部图片 -->
-           <div class='headimg'>
+           <div class='headimg' v-if="product">
            <div><img :src="product.img_url" alt=""></div>
            </div>
            <!-- 标题 -->
             <h3>---{{product.name}}----</h3>
             <!-- 商品列表 -->
-            <div class='allproduct'>
-                   <dl  v-for='(citem) in product.subCategoryList' :key='citem.id' @click='()=>todetail(citem.id)'>
+            <div class='allproduct' v-if="product">
+                   <dl  v-for='(citem,index) in product.subCategoryList' :key='citem.id' @click='()=>todetail(citem.id,index)'>
                    <dt>
                      <img :src="citem.wap_banner_url" alt="">
                    </dt>
@@ -66,38 +66,43 @@ export default Vue.extend({
   },
  
   computed:{
-     ...mapState(['leftlist','product','arr'])
+     ...mapState({
+       leftlist:state=>state.getGoods.leftlist,
+       product: state=>state.getGoods.product
+     })
   },
 
   methods:{
-     ...mapActions(['getclassify','getanother','getclass','getgoods']),
     search(){
       this.$router.push('/search')
-       // console.log(e.keyCode,this.serchval);
     },
-   async todetail(id){
-      await this.getclass(id);
-      this.$router.history.push('/home/classify/detail');
+   async todetail(id,ind){
+       this.$store.commit("getGoods/setIDwithInd",{ind});
+      this.$router.push(`/home/classify/detail/${id}`);
     },
     changeind(id,ind){
       this.ind=ind;
       this.flag=true;
       localStorage.setItem('id',id);
       localStorage.setItem('ind',ind);
-      this.getanother(id);
+     this.getGoodsRightlist();
+    },
+    getGoodsRightlist(){
+        const id=localStorage.getItem('id');
+      this.$store.dispatch("getGoods/getanother",{id})
+    },
+    getInitList(){
+    this.$store.dispatch("getGoods/getclassify");
+    // this.$store.dispatch("getGoods/getgoods");
     }
   },
   mounted(){
+    this.getInitList();
+     this.getGoodsRightlist();
    this.Bscroll = new BScroll('.right',{
        probeType:2,
        click:true
     })
-    this.getclassify();
-    
-    if(!this.flag && this.ind>0){
-      const id=localStorage.getItem('id');
-      this.getanother(id);
-    }
     
   }
 

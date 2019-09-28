@@ -28,7 +28,6 @@ let mutations = {
 
   // 详情页
   goodsItem(state:any,payload:any){
-    console.log('goodsItem',JSON.parse(JSON.stringify(payload)))
       state.itemText = payload
   },
 }

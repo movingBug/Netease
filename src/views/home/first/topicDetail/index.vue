@@ -10,23 +10,34 @@
             <i class="iconfont icon-pencil" aria-hidden="true"></i>
           </div>
         </div>
-        <div class="commentList">
-          <div class="commentItem">
+        <div class="commentList" v-if="commentList">
+          <div class="commentItem" v-for="item in commentList" :key="item.id">
             <div class="userInfo">
               <div>匿名用户</div>
-              <div>2017-05-15 10:06:01</div>
+              <div>{{item.add_time}}</div>
             </div>
-            <div class="userComment">是记忆棉 很满意</div>
+            <div class="userComment">{{item.content}}</div>
             <div class="commentPicList"></div>
           </div>
         </div>
-        <a class="moreComment" href="#/comment/314?typeId=1">查看更多评论</a>
+        <router-link class="moreComment" :to="'/comment/'+this.$route.params.id">查看更多评论</router-link>
+      </div>
+      <div class="relateTopic" v-if="relate">
+        <div class="relateTopicTitle">推荐专题</div>
+        <div class="relateTopicItem" v-for="item in relate" :key="item.id">
+          <img
+            class="imgLazyload loadEnd"
+            :src="item.scene_pic_url"
+            alt="imgLazyLoad"
+          />
+          <div>{{item.title}}</div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 <script>
-import Header from "../../../../components/header/index.vue";
+import Header from "@/components/header/index.vue";
 import { mapState, mapMutations, mapActions } from "vuex";
 
 export default {
@@ -35,20 +46,33 @@ export default {
     Header
   },
   data() {
-    return {};
+    return {
+      page: 1,
+      size: 5
+    };
   },
   computed: {
     ...mapState({
-      topicData: state => state.topic.topicData
+      topicData: state => state.topic.topicData,
+      commentList: state => state.topic.commentList,
+      relate: state => state.topic.relate
     })
   },
   methods: {
     ...mapActions({
-      TopicData: "topic/TopicData"
+      TopicData: "topic/TopicData",
+      comment: "topic/comment",
+      Related: "topic/Related"
     })
   },
   created() {
     this.TopicData(this.$route.params.id);
+    this.Related(this.$route.params.id);
+    this.comment({
+      id: this.$route.params.id,
+      page: this.page,
+      size: this.size
+    });
   },
   mounted() {}
 };
@@ -178,6 +202,34 @@ export default {
     text-decoration: none;
     color: black;
     cursor: pointer;
+  }
+
+  .relateTopic {
+    margin-top: 0.1rem;
+    padding: 0 0.1rem;
+  }
+
+  .relateTopic .relateTopicTitle {
+    line-height: 0.4rem;
+    text-align: center;
+  }
+
+  .relateTopic .relateTopicItem {
+    background: white;
+    padding: 0.1rem 0.1rem 0 0.1rem;
+    margin-bottom: 0.1rem;
+    display: block;
+  }
+
+  .relateTopic .relateTopicItem img {
+    width: 100%;
+    height: 2rem;
+  }
+
+  .relateTopic .relateTopicItem div {
+    line-height: 0.5rem;
+    color: gray;
+    font-size: 0.14rem;
   }
 }
 </style>

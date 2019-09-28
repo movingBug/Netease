@@ -72,6 +72,21 @@ export default new Router({
           component: () => import('../views/home/special/index.vue')
         },
         {
+          path: '/topic/topicdetail/:id',
+          name: 'topicdetail',
+          component: () => import('../components/topicdetail/index.vue')
+        },
+        {
+          path: '/topic/topiccomment/:id',
+          name: 'topiccomment',
+          component: () => import('../components/topiccomment/index.vue'),
+        },
+        {
+          path: '/topic/moreComment/:id',
+          name: 'moreComment',
+          component: () => import('../components/moreComment/index.vue'),
+        },
+        {
           path: '/home/classify',
           name: 'classify',
           component: () => import('../views/home/classify/index.vue')
@@ -110,11 +125,16 @@ export default new Router({
       component: () => import('../views/home/first/topicDetail/index.vue')
     },
     {
+      path: '/comment/:id',
+      name: 'comment',
+      component: () => import('../views/home/first/comment/index.vue')
+    },
+    {
       path: '/search',
       name: 'search',
       component: () => import('../views/search/index.vue')
     },{
-      path: '/home/classify/detail',
+      path: '/home/classify/detail/:id',
       name: 'detail',
       component: () => import('../views/home/classify/datail/index.vue')
     },{

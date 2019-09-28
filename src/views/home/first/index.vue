@@ -2,7 +2,7 @@
   <div class="firstPage">
     <Swiper :options="swiperOption" :list="lists" />
     <div class="NavList">
-      <ul class="ulList">
+      <ul class="ulList" v-if="channel">
         <li v-for="(item) in channel" :key="item.id" @click="e=>ToDetail(item.id)">
           <span>
             <img :src="item.icon_url" alt />
@@ -13,7 +13,7 @@
     </div>
     <div class="brandBox">
       <div class="brandTitle">品牌制造商直供</div>
-      <div class="brandWrap">
+      <div class="brandWrap" v-if="brandList">
         <router-link
           :to="'/brandDetail/'+item.id"
           class="brandItem"
@@ -28,9 +28,9 @@
     </div>
     <div class="newGoodsBox">
       <div class="newGoodsTitle">新品首发</div>
-      <div class="newGoodsWrap">
+      <div class="newGoodsWrap" v-if="newGoodsList">
         <!-- 这个需要改跳路由的 -->
-        <router-link class="newGoodsItem" to="/" v-for="(item) in newGoodsList" :key="item.id">
+        <router-link class="newGoodsItem" :to="'/productDetails/'+item.id"   v-for="(item) in newGoodsList" :key="item.id">
           <img class="imgLazyload loadEnd" :src="item.list_pic_url" alt="imgLazyLoad" />
           <div class="newGoodsName">{{item.name}}</div>
           <div class="newGoodsPrice">￥{{item.retail_price}}</div>
@@ -39,8 +39,8 @@
     </div>
     <div class="hotGoodsBox">
       <div class="hotGoodsTitle">人气推荐</div>
-      <div class="hotGoodsWrap">
-        <router-link class="hotGoodsItem" to="/" v-for="(item) in hotGoodsList" :key="item.id">
+      <div class="hotGoodsWrap" v-if="hotGoodsList">
+        <router-link class="hotGoodsItem" :to="'/productDetails/'+item.id" v-for="(item) in hotGoodsList" :key="item.id">
           <img class="imgLazyload loadEnd" :src="item.list_pic_url" alt="imgLazyLoad" />
           <div class="hotGoodsInfos">
             <div class="hotGoodsName">{{item.name}}</div>
@@ -57,7 +57,7 @@
           :options="swiperTopic"
           class="swiper-topic"
           ref="mySwiper"
-          v-if="topicList.length!=0"
+          v-if="topicList"
         >
           <swiper-slide v-for="(item) in topicList" :key="item.id" id="swiper-content-slide">
             <router-link :to="'/topicDetail/'+item.id" class="topGoodItem">
@@ -72,14 +72,14 @@
         </swiper>
       </div>
     </div>
-    <div class="Impurity">
+    <div class="Impurity" v-if="categoryList">
       <div class="contentPage" v-for="(item) in categoryList" :key="item.id">
         <div class="cateGoryName">{{item.name}}</div>
         <div class="cateGoryGoodsWrap">
           <router-link
             class="cateGoryRout"
             tag="div"
-            to="/"
+            :to="'/productDetails/'+val.id"
             v-for="(val) in item.goodsList"
             :key="val.id"
           >
@@ -89,13 +89,13 @@
             <div class="goodsItemName">{{val.name}}</div>
             <div class="goodsItemPrice">￥{{val.retail_price}}</div>
           </router-link>
-          <router-link class="categoryMoreGoods" to="/">
+          <div class="categoryMoreGoods" @click="e=>ToDetail(item.id)">
             <div>更多{{item.name}}好物</div>
             <img
               src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEMAAABDCAMAAADwFEhBAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAABLUExURf///4uLi7KysszMzHJycvb29qurq2ZmZv7+/m1tbZSUlN3d3Xd3d35+fsbGxtnZ2e/v7/z8/J2dneHh4evr676+voaGhri4uNPT04zm/X4AAAIzSURBVFjDvVjRlqsgDKwojgEsYq36/196pbZdRVyjh728eCxlIGEySbzd/nI0uWh7QwCZvhV5cxrgUdYIRl0+TgDIwQOQErlu5PTa6Fwo8jCDZCKIAjCldeufnS0NUAgGSnWfELLRxebcmE0o9+oAopv+ldn9eevnu18hcjrax5+T8l/mS0Ad2isVUO7t41rQs2K47EloXRxCgUbe1Y0EFQOpWhSayyBdoI2cuARpPg01odzeCMieCQZLCG+nIzzPRdQTtOZJlUFV5zAqhWy15I5Cng1taXBfvharV+bIVxuL4FjMkUEsj6GvKJ1eHGRAdk0uMwwfD9cYr2GMqKvPkUx1DcOZjxPKCG3D0ddRXf8urWEZlpuYelnUcx4BuWNCTSCR1OAIzUwVxWFlhiICoubIEwx3vCVqa7OYaaaYPPdSOW75/jKi55J0UrqNomv0/mHATcde94MzNzD+QeCHvUAgVRKFfwCn1GsRq6/VtMXA8VgmKDdjrG3hYGxt4ft0tmVYafns0/6EAG18+r5bxdbSyN2+Ocbk+kzUPM51XsztcP0dc6zY34m5KfY7tgbtxP5Hg1haKPuoBn2XTmni0Jg+qoXum5g4uSGuyT+5IUWO8rnSXoGwy6SdIGcnqR1S1DBXaqlbWEulqOmS1JZJatxXrc1u2B7xWnsnoe4Zotx+78Fy527vkaQHStKLpekJk/SmPz2yDntkze6Rg169k87J7nSvnuabQfDtorj47eK/j3/n9xya7EBtgAAAAABJRU5ErkJggg=="
               alt="more"
             />
-          </router-link>
+          </div>
         </div>
       </div>
     </div>

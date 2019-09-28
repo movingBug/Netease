@@ -1,31 +1,57 @@
 // topic
-import { topic} from '../../services/index'
+import { topic, comment, commentList, related } from '../../services/index'
 
 let state = {
-   topicData:{},
-//    branList:[],
-   
+  topicData: {},
+  commentList: [],
+  commentItem: [],
+  relate: []
 }
 
 let mutations = {
-    topicFn(state:any,payload:any){
-        console.log('result------',JSON.parse(JSON.stringify(payload)))
-        state.topicData = payload
-    },
-    // banList(state:any,payload:any){
-    //     // console.log('banList------',JSON.parse(JSON.stringify(payload)))
-    //     state.branList = payload.data
-    // }
+  topicFn (state: any, payload: any) {
+    state.topicData = payload
+  },
+
+  commentFn (state: any, payload: any) {
+    state.commentList = payload
+  },
+
+  commentListFn (state: any, payload: any) {
+    state.commentItem = payload
+  },
+
+  relatedFn (state: any, payload: any) {
+    // console.log('payload-----',payload)
+    state.relate = payload
+  }
 }
 
 let actions = {
   async TopicData ({ commit }: any, payload: any) {
-    const result =await topic(payload);
-    // console.log('topic---',result.data)
-     commit('topicFn', result.data)
+    const result = await topic(payload)
+    console.log('topic---', result.data)
+    commit('topicFn', result.data)
   },
 
+  async comment ({ commit }: any, payload: any) {
+    const result = await comment(payload)
+    // console.log('commentFn---',result.data)
+    commit('commentFn', result.data.data)
+  },
 
+  async commentList ({ commit }: any, payload: any) {
+    const result = await commentList(payload)
+    commit('commentListFn', result.data.data)
+  },
+
+  // related
+  // 获取相关专题
+  async Related ({ commit }: any, payload: any) {
+    const result = await related(payload)
+    
+    commit('relatedFn', result.data)
+  }
 }
 
 export default {

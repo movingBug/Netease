@@ -1,3 +1,11 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: sueRimn
+ * @Date: 2019-09-27 15:10:34
+ * @LastEditors: sueRimn
+ * @LastEditTime: 2019-09-28 17:16:55
+ -->
 <template>
   <swiper :options="options" class="swiper-wrap" ref="mySwiper" v-if="list.length!=0">
     <swiper-slide v-for="(item,index) in list" :key="index" class="swiper-container">
@@ -10,7 +18,6 @@
 </template>
 <script>
 import { swiper, swiperSlide } from "vue-awesome-swiper";
-// require("swiper/dist/css/swiper.css");
 
 export default {
   props: ["options", "list"],
