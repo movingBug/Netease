@@ -27,4 +27,7 @@ html {
   height: 100%;
   font-size:0.14rem;
 }
+html {
+    font-size: calc(100/375*100vw)
+}
 </style>

@@ -2,6 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-09-24 11:49:23
+<<<<<<< HEAD
  * @LastEditTime: 2019-09-27 11:01:41
  * @LastEditors: Please set LastEditors
  -->
@@ -20,28 +21,74 @@
  <div class='product'>
 
      <dl v-for='item in goods' :key='item.id' @click="()=>togooddatail(item.id)">
+=======
+ * @LastEditTime: 2019-09-27 15:16:41
+ * @LastEditors: Please set LastEditors
+ -->
+<template>
+  <div class="probox">
+    <p @click="back">返回</p>
+
+    <ly-tab v-model="selectedId" :items="arr" :options="options" @change="()=>change()"></ly-tab>
+    <div class='product'>
+   <dl v-for='item in goods' :key='item.id' @click="()=>togooddatail(item.id)">
+>>>>>>> ea915a7699f844a2b4952ef6e0ba3008cd8a1203
          <dt><img :src="item.list_pic_url" alt=""></dt>
          <dd>{{item.name}}</dd>
      </dl>
- </div>
     </div>
+  </div>
 </template>
 <script>
+<<<<<<< HEAD
 import Vue from 'vue'
 import {mapState,mapMutations,mapActions} from 'vuex'
 import LyTab from 'ly-tab';
 import Scrollrefesh from '../../../../components/scrollrefuch'
+=======
+import Vue from "vue";
+import { mapState, mapMutations, mapActions } from "vuex";
+import LyTab from "ly-tab";
+import Scrollrefesh from "@/components/scrollrefuch";
+>>>>>>> ea915a7699f844a2b4952ef6e0ba3008cd8a1203
 
-Vue.use(LyTab)
+Vue.use(LyTab);
 export default Vue.extend({
+<<<<<<< HEAD
     data(){
     return({
         selectedId:0,
         options: {
         activeColor: '#1d98bd'
        },
+=======
+  data() {
+    return {
+      selectedId: 0,
+      options: {
+        activeColor: "#1d98bd"
+      }
+    };
+  },
+  components: {
+     Scrollrefesh
+  },
+  computed: {
+    ...mapState({
+      arr: state => state.getGoods.arr,
+      goods: state => state.getGoods.goods,
+      ind: state => state.getGoods.ind,
+      id: state => state.getGoods.id
+>>>>>>> ea915a7699f844a2b4952ef6e0ba3008cd8a1203
     })
+  },
+
+  methods: {
+    change() {
+      let id = this.arr[this.selectedId].id || this.$router.params.id;
+         this.$store.dispatch('getGoods/getgoods',{id});
     },
+<<<<<<< HEAD
     components:{
         Scrollrefesh
     },
@@ -74,10 +121,26 @@ export default Vue.extend({
         }else if(localStorage.getItem('detailid')!==this.$route.params.id){
              localStorage.setItem('detailid',this.$route.params.id);
         }
+=======
+    back() {
+      this.$router.push("/home/classify");
+    },
+    getInitData(){
+  this.$store.dispatch("getGoods/getclass",{id:this.$route.params.id})
+    },
+    togooddatail(id){
+        this.$router.push(`/productDetails/${id}`)
+>>>>>>> ea915a7699f844a2b4952ef6e0ba3008cd8a1203
     }
-})
+  },
+  mounted() {
+      this.getInitData();
+     this.$store.dispatch('getGoods/getgoods',{id:this.$route.params.id});
+  }
+});
 </script>
 <style >
+<<<<<<< HEAD
    .probox{
        width:100%;
        height:100%;
@@ -151,4 +214,55 @@ export default Vue.extend({
         width:100%;
         height:auto;
     }
+=======
+.probox {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.probox > p {
+  height: 0.4rem;
+  line-height: 0.4rem;
+}
+.probox h4 {
+  widows: 100%;
+  height: 0.4rem;
+  text-align: center;
+  line-height: 0.4rem;
+  color: skyblue;
+}
+.probox .scrref {
+  flex: 1;
+  overflow: hidden;
+}
+
+.probox .product {
+  flex: 1;
+  display: flex;
+  width: 100%;
+  overflow-y: auto;
+  flex-wrap: wrap;
+  height: auto;
+}
+.probox .product p {
+  width: 100%;
+  height: 0.5rem;
+  text-align: center;
+  line-height: 0.5rem;
+  color: skyblue;
+}
+.probox .product > dl {
+  width: 50%;
+}
+.probox .product > dl dt {
+  width: 80%;
+  margin: 0 auto;
+}
+.probox .product > dl dt img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+>>>>>>> ea915a7699f844a2b4952ef6e0ba3008cd8a1203
 </style>

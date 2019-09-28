@@ -39,12 +39,45 @@ export default Vue.extend({
 });
 </script>
 <style lang="scss">
+<<<<<<< HEAD
 
 html,body{
    width: 100%;
    height: 100%;
 }
+=======
+    html {
+      font-size: calc(100/375*100vw)
+    }
+   .home{
+     width: 100%;
+     height: 100%;
+     display:flex; 
+     flex-direction:column; 
+   }
 
+   .homeMain{
+     flex:1; 
+   }
+
+   .homeFoot{
+     width: 100%;
+     height:.5rem;
+     display:flex; 
+     justify-content:center;
+     align-items:center; 
+     font-size: .14rem;
+   }
+>>>>>>> ea915a7699f844a2b4952ef6e0ba3008cd8a1203
+
+   .homeFoot>span{
+      flex:1;
+      display:inline-block;
+      width: 100%;
+      height: 100%;
+      text-align:center; 
+      line-height:.5rem;
+   }
 .home {
   width: 100%;
   height: 100%;

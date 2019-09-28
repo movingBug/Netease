@@ -56,10 +56,20 @@ export default Vue.extend({
    })
   },
   computed:{
-     ...mapState(['hotlist','title','historylist','searchlist'])
+     ...mapState({
+         hotlist: state => state.getGoods.hotlist,
+         title: state => state.getGoods.title,
+         historylist: state => state.getGoods.historylist,
+         searchlist: state => state.getGoods.searchlist,
+     })
   },
   methods:{
-      ...mapActions(['gethotsearch','getfinddata','getindex','clearsearch']),
+      ...mapActions({
+         gethotsearch: "getGoods/gethotsearch",
+         getfinddata: "getGoods/getfinddata",
+         getindex: "getGoods/getindex",
+         clearsearch: "getGoods/clearsearch",
+      }),
       changeval(e){
          if(!this.val){this.ind=0}
          this.getfinddata(this.val);
