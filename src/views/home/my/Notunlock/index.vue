@@ -4,13 +4,13 @@
  * @Author: sueRimn
  * @Date: 2019-09-24 07:59:11
  * @LastEditors: sueRimn
- * @LastEditTime: 2019-09-26 11:20:48
+ * @LastEditTime: 2019-09-28 14:09:33
  -->
 <template>
-    <div class="content">
-      <i class="iconfont">&#xe617;</i>
-      <div>{{this.productName}}还未解锁，请耐心等待~</div>
-    </div>
+  <div class="content">
+    <i class="iconfont">&#xe617;</i>
+    <div>{{this.productName}}还未解锁，请耐心等待~</div>
+  </div>
 </template>
 
 <script lang="ts">

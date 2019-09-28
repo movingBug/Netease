@@ -4,7 +4,7 @@
  * @Author: sueRimn
  * @Date: 2019-09-23 15:02:34
  * @LastEditors: sueRimn
- * @LastEditTime: 2019-09-26 09:56:21
+ * @LastEditTime: 2019-09-28 14:16:29
  */
 import Vue from 'vue'
 import App from './App.vue'
@@ -14,7 +14,7 @@ import store from './store/index'
 // 引入轮播
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 // require styles
-// import 'swiper/dist/css/swiper.css';
+import "swiper/css/swiper.min.css";
 import "@/assets/font/iconfont.css";
 
 Vue.use(VueAwesomeSwiper)
