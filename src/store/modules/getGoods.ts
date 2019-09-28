@@ -13,8 +13,8 @@ import {
   getgoods,
   getgoodsdetail,
   gethotsearch,
-  getfinddata,
-} from '../../services/index';
+  getfinddata
+} from '@/services/index';
 
 const Ind = window.localStorage.getItem('ind') || '';
 

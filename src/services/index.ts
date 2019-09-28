@@ -150,8 +150,8 @@ export function getgoods(params:any) {
     })
 }
 
-export async function getgoodsdetail(params:any) {
-    return await request.get('/goods/detail',{
+export function getgoodsdetail(params:any) {
+    return request.get('/goods/detail',{
         params:{
            id:params
         }
