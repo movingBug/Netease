@@ -2,8 +2,8 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-09-23 15:17:54
- * @LastEditTime: 2019-09-23 16:35:38
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2019-09-28 14:02:16
+ * @LastEditors: sueRimn
  -->
 <template>
   <div class="home">
@@ -35,7 +35,9 @@ import Vue from "vue";
 
 export default Vue.extend({
   name: "home",
-  components: {}
+  components: {
+    
+  }
 });
 </script>
 <style lang="scss">
