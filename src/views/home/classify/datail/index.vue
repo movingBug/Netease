@@ -2,21 +2,19 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-09-24 11:49:23
- * @LastEditTime: 2019-09-25 17:12:35
+ * @LastEditTime: 2019-09-27 15:16:41
  * @LastEditors: Please set LastEditors
  -->
 <template>
   <div class="probox">
-    <ly-tab v-model="selectedId" :items="arr" :options="options" @change="()=>change()"></ly-tab>
+    <p @click="back">返回</p>
 
-    <div class="product">
-      <!-- <p>{{arr[selectedId].label}}</p> -->
-      <dl v-for="item in goods" :key="item.id" @click="(e)=>togooddatail(item.id)">
-        <dt>
-          <img :src="item.list_pic_url" alt />
-        </dt>
-        <dd>{{item.name}}</dd>
-      </dl>
+    <ly-tab v-model="selectedId" :items="arr" :options="options" @change="()=>change()"></ly-tab>
+    <div class='product'>
+   <dl v-for='item in goods' :key='item.id' @click="()=>togooddatail(item.id)">
+         <dt><img :src="item.list_pic_url" alt=""></dt>
+         <dd>{{item.name}}</dd>
+     </dl>
     </div>
   </div>
 </template>
@@ -24,42 +22,48 @@
 import Vue from "vue";
 import { mapState, mapMutations, mapActions } from "vuex";
 import LyTab from "ly-tab";
+import Scrollrefesh from "@/components/scrollrefuch";
 
 Vue.use(LyTab);
 export default Vue.extend({
   data() {
     return {
-      selectedId: -1,
+      selectedId: 0,
       options: {
         activeColor: "#1d98bd"
       }
     };
   },
+  components: {
+     Scrollrefesh
+  },
   computed: {
     ...mapState({
       arr: state => state.getGoods.arr,
-      goods: state => state.getGoods.goods
+      goods: state => state.getGoods.goods,
+      ind: state => state.getGoods.ind,
+      id: state => state.getGoods.id
     })
   },
 
   methods: {
-    ...mapActions({
-      getgoods: "getGoods/getgoods",
-      getgoodsdetail: "getGoods/getgoodsdetail"
-    }),
     change() {
-      this.arr.length
-        ? this.getgoods(this.arr[this.selectedId].id)
-        : this.getgoods(1008002);
+      let id = this.arr[this.selectedId].id || this.$router.params.id;
+         this.$store.dispatch('getGoods/getgoods',{id});
     },
-    togooddatail(id) {
-      this.getgoodsdetail(id);
-      this.$router.push("/home/classify/detail/product");
+    back() {
+      this.$router.push("/home/classify");
+    },
+    getInitData(){
+  this.$store.dispatch("getGoods/getclass",{id:this.$route.params.id})
+    },
+    togooddatail(id){
+        this.$router.push(`/productDetails/${id}`)
     }
   },
   mounted() {
-    this.selectedId = 0;
-    //  console.log(this.arr)
+      this.getInitData();
+     this.$store.dispatch('getGoods/getgoods',{id:this.$route.params.id});
   }
 });
 </script>
@@ -70,6 +74,10 @@ export default Vue.extend({
   display: flex;
   flex-direction: column;
 }
+.probox > p {
+  height: 0.4rem;
+  line-height: 0.4rem;
+}
 .probox h4 {
   widows: 100%;
   height: 0.4rem;
@@ -77,6 +85,11 @@ export default Vue.extend({
   line-height: 0.4rem;
   color: skyblue;
 }
+.probox .scrref {
+  flex: 1;
+  overflow: hidden;
+}
+
 .probox .product {
   flex: 1;
   display: flex;

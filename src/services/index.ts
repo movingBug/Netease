@@ -133,16 +133,17 @@ export async function getanother(params:any) {
     })
 }
 
-export async function getclass(params:any) {
-    return await request.get('/goods/category',{
-        params:{id:params}
+export function Getclass(params:any) {
+    console.log(params);
+    return request.get('/goods/category',{
+        params
     })
 }
 
-export async function getgoods(params:any) {
-    return await request.get('/goods/list',{
+export function getgoods(params:any) {
+    return request.get('/goods/list',{
         params:{
-            categoryId:params,
+            categoryId:params.id,
             page: 1,
             size: 10
         }

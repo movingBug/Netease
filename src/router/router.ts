@@ -119,7 +119,7 @@ export default new Router({
       name: 'search',
       component: () => import('../views/search/index.vue')
     },{
-      path: '/home/classify/detail',
+      path: '/home/classify/detail/:id',
       name: 'detail',
       component: () => import('../views/home/classify/datail/index.vue')
     },{
