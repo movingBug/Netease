@@ -150,12 +150,6 @@ export default Vue.extend({
         notNextTick: true,
         loop: true,
         initialSlide: 0,
-        //自动播放
-        // autoplay: {
-        //   delay: 1500,
-        //   stopOnLastSlide: false,
-        //   disableOnInteraction: false
-        // },
         speed: 1000,
         direction: "horizontal",
         grabCursor: true
