@@ -4,7 +4,7 @@
  * @Author: sueRimn
  * @Date: 2019-09-28 17:15:54
  * @LastEditors: sueRimn
- * @LastEditTime: 2019-09-29 07:52:29
+ * @LastEditTime: 2019-09-29 11:52:40
  -->
 <template>
   <div class="firstPage">
@@ -61,12 +61,7 @@
     <div class="topGoodsBox">
       <div class="topGoodsTitle">专题精选</div>
       <div class="topGoodsWrap">
-        <swiper
-          :options="swiperTopic"
-          class="swiper-topic"
-          ref="mySwiper"
-          v-if="topicList"
-        >
+        <swiper :options="swiperTopic" class="swiper-topic" ref="mySwiper" v-if="topicList">
           <swiper-slide v-for="(item) in topicList" :key="item.id" id="swiper-content-slide">
             <router-link :to="'/topicDetail/'+item.id" class="topGoodItem">
               <img v-lazy="item.item_pic_url" alt="no" />
@@ -116,8 +111,6 @@ import { mapState, mapMutations, mapActions } from "vuex";
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 import Swiper from "../../../components/swiper/index.vue";
 
-// require("swiper/dist/css/swiper.css");
-
 export default Vue.extend({
   name: "First",
   data() {
@@ -153,19 +146,17 @@ export default Vue.extend({
 
       swiperTopic: {
         notNextTick: true,
-        paginationClickable: true,
-        slidesPerView: "auto",
-        centeredSlides: true,
         loop: true,
         initialSlide: 0,
+        //自动播放
+        // autoplay: {
+        //   delay: 1500,
+        //   stopOnLastSlide: false,
+        //   disableOnInteraction: false
+        // },
+        speed: 1000,
         direction: "horizontal",
-        grabCursor: true,
-        on: {
-          slideChangeTransitionStart: function() {
-            /* realIndex为滚动到当前的slide索引值 */
-            // that.imgIndex= this.realIndex - 1;
-          }
-        }
+        grabCursor: true
       }
     };
   },

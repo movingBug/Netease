@@ -14,14 +14,14 @@
         <img class="imgLazyload loadEnd" v-lazy="brand.list_pic_url" alt="imgLazyLoad" />
         <div class="breadDesc">{{brand.simple_desc}}</div>
       </div>
-
+      
       <!-- 这个需要改跳路由的 -->
       <div class="brandContent">
-        <div class="brandWrap">
+        <div class="brandWrap" v-if="branList">
           <router-link
             class="brandRout"
             tag="div"
-            :to="'/productDetails/'+item.id"
+            :to="'/productDetails/'+val.id"
             v-for="(val) in branList"
             :key="val.id"
           >
