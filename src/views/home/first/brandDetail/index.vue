@@ -2,18 +2,18 @@
   <div class="brandPage">
     <Header :data="brand"/>
     <div class="brandMain">
-      <div class="brandDetail">
+      <div class="brandDetail" v-if="brand">
         <img class="imgLazyload loadEnd" :src="brand.list_pic_url" alt="imgLazyLoad" />
         <div class="breadDesc">{{brand.simple_desc}}</div>
       </div>
-
+      
       <!-- 这个需要改跳路由的 -->
       <div class="brandContent">
-        <div class="brandWrap">
+        <div class="brandWrap" v-if="branList">
           <router-link
             class="brandRout"
             tag="div"
-            :to="'/productDetails/'+item.id"
+            :to="'/productDetails/'+val.id"
             v-for="(val) in branList"
             :key="val.id"
           >

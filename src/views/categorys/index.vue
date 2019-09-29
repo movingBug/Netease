@@ -93,7 +93,8 @@ export default {
     },
 
     goodsJurp(id) {
-      this.$router.push(`/goods/${id}`);
+      // :to="'/productDetails/'+item.id"
+      this.$router.push(`/productDetails/${id}`);
     }
   },
 

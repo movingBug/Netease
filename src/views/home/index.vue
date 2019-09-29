@@ -92,6 +92,8 @@ export default Vue.extend({
 .homeMain {
   flex: 1;
   overflow: auto;
+  -webkit-overflow-scrolling: touch;
+
 }
 
 .homeFoot {

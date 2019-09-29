@@ -30,7 +30,12 @@
       <div class="newGoodsTitle">新品首发</div>
       <div class="newGoodsWrap" v-if="newGoodsList">
         <!-- 这个需要改跳路由的 -->
-        <router-link class="newGoodsItem" :to="'/productDetails/'+item.id"   v-for="(item) in newGoodsList" :key="item.id">
+        <router-link
+          class="newGoodsItem"
+          :to="'/productDetails/'+item.id"
+          v-for="(item) in newGoodsList"
+          :key="item.id"
+        >
           <img class="imgLazyload loadEnd" :src="item.list_pic_url" alt="imgLazyLoad" />
           <div class="newGoodsName">{{item.name}}</div>
           <div class="newGoodsPrice">￥{{item.retail_price}}</div>
@@ -40,7 +45,12 @@
     <div class="hotGoodsBox">
       <div class="hotGoodsTitle">人气推荐</div>
       <div class="hotGoodsWrap" v-if="hotGoodsList">
-        <router-link class="hotGoodsItem" :to="'/productDetails/'+item.id" v-for="(item) in hotGoodsList" :key="item.id">
+        <router-link
+          class="hotGoodsItem"
+          :to="'/productDetails/'+item.id"
+          v-for="(item) in hotGoodsList"
+          :key="item.id"
+        >
           <img class="imgLazyload loadEnd" :src="item.list_pic_url" alt="imgLazyLoad" />
           <div class="hotGoodsInfos">
             <div class="hotGoodsName">{{item.name}}</div>
@@ -53,12 +63,7 @@
     <div class="topGoodsBox">
       <div class="topGoodsTitle">专题精选</div>
       <div class="topGoodsWrap">
-        <swiper
-          :options="swiperTopic"
-          class="swiper-topic"
-          ref="mySwiper"
-          v-if="topicList"
-        >
+        <swiper :options="swiperTopic" class="swiper-topic" ref="mySwiper" v-if="topicList">
           <swiper-slide v-for="(item) in topicList" :key="item.id" id="swiper-content-slide">
             <router-link :to="'/topicDetail/'+item.id" class="topGoodItem">
               <img :src="item.item_pic_url" alt="no" />
@@ -108,8 +113,6 @@ import { mapState, mapMutations, mapActions } from "vuex";
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 import Swiper from "../../../components/swiper/index.vue";
 
-// require("swiper/dist/css/swiper.css");
-
 export default Vue.extend({
   name: "First",
   data() {
@@ -145,19 +148,17 @@ export default Vue.extend({
 
       swiperTopic: {
         notNextTick: true,
-        paginationClickable: true,
-        slidesPerView: "auto",
-        centeredSlides: true,
         loop: true,
         initialSlide: 0,
+        //自动播放
+        // autoplay: {
+        //   delay: 1500,
+        //   stopOnLastSlide: false,
+        //   disableOnInteraction: false
+        // },
+        speed: 1000,
         direction: "horizontal",
-        grabCursor: true,
-        on: {
-          slideChangeTransitionStart: function() {
-            /* realIndex为滚动到当前的slide索引值 */
-            // that.imgIndex= this.realIndex - 1;
-          }
-        }
+        grabCursor: true
       }
     };
   },

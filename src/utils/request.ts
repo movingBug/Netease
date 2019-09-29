@@ -11,12 +11,13 @@ import { AxiosResponse } from 'axios/index';
 let key = window.localStorage.getItem("sessionKey");
 
 const instance = axios.create({
-    baseURL: 'http://127.0.0.1:8888',
+    baseURL: /cyz.jasonandjay.com/.test(window.location.host)?'https://easymarket.jasonandjay.com':'//169.254.212.227:8888',
     timeout: 1000,
     headers: {
         "x-nideshop-token": key
     }
 })
+
 
 // 请求拦截器
 instance.interceptors.request.use((config: any) => {

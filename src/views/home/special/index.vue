@@ -32,12 +32,12 @@ export default Vue.extend({
   methods:{
       async _getData(){
           const reset = await getData()
-          console.log(reset.data.data)  
+          // console.log(reset.data.data)  
           this.imgData = reset.data.data
       },
       getDatadetail(id:any){
-        console.log(this.$router) 
-        this.$router.push({name:"topicdetail",params:{id}})
+
+        this.$router.push(`/topicDetail/${id}`)
       }
   },
   mounted(){

@@ -71,21 +71,21 @@ export default new Router({
           name: 'special',
           component: () => import('../views/home/special/index.vue')
         },
-        {
-          path: '/topic/topicdetail/:id',
-          name: 'topicdetail',
-          component: () => import('../components/topicdetail/index.vue')
-        },
+        // {
+        //   path: '/topic/topicdetail/:id',
+        //   name: 'topicdetail',
+        //   component: () => import('../components/topicdetail/index.vue')
+        // },
         {
           path: '/topic/topiccomment/:id',
           name: 'topiccomment',
           component: () => import('../components/topiccomment/index.vue'),
         },
-        {
-          path: '/topic/moreComment/:id',
-          name: 'moreComment',
-          component: () => import('../components/moreComment/index.vue'),
-        },
+        // {
+        //   path: '/topic/moreComment/:id',
+        //   name: 'moreComment',
+        //   component: () => import('../components/moreComment/index.vue'),
+        // },
         {
           path: '/home/classify',
           name: 'classify',
