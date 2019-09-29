@@ -110,11 +110,6 @@ export default new Router({
       children: []
     },
     {
-      path: '/goods/:id',
-      name: 'goods',
-      component: () => import('../views/home/first/goods/index.vue')
-    },
-    {
       path: '/brandDetail/:id',
       name: 'brandDetail',
       component: () => import('../views/home/first/brandDetail/index.vue')

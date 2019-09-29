@@ -8,7 +8,7 @@
  -->
 <template>
   <div class="firstPage">
-    <Swiper :options="swiperOption" :list="lists" />
+    <SwiperSl :options="swiperOption" :list="lists" />
     <div class="NavList">
       <ul class="ulList" v-if="channel">
         <li v-for="(item) in channel" :key="item.id" @click="e=>ToDetail(item.id)">
@@ -109,7 +109,9 @@
 import Vue from "vue";
 import { mapState, mapMutations, mapActions } from "vuex";
 import { swiper, swiperSlide } from "vue-awesome-swiper";
-import Swiper from "../../../components/swiper/index.vue";
+import SwiperSl from "../../../components/swiper/index.vue";
+import Swiper from 'swiper';
+import 'swiper/dist/css/swiper.min.css';
 
 export default Vue.extend({
   name: "First",
@@ -188,7 +190,8 @@ export default Vue.extend({
   components: {
     swiper,
     swiperSlide,
-    Swiper
+    // Swiper
+    SwiperSl
   }
 });
 </script>

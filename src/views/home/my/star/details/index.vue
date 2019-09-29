@@ -113,6 +113,8 @@ import { mapState } from "vuex";
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 import Loading from "@/components/hint/index";
 import ShopMask from "@/components/windows/index";
+import Swiper from 'swiper';
+import 'swiper/dist/css/swiper.min.css';
 
 export default {
   name: "productDetails",

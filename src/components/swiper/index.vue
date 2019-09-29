@@ -18,6 +18,8 @@
 </template>
 <script>
 import { swiper, swiperSlide } from "vue-awesome-swiper";
+import Swiper from 'swiper';
+import 'swiper/dist/css/swiper.min.css';
 
 export default {
   props: ["options", "list"],

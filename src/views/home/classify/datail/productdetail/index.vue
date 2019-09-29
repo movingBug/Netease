@@ -58,9 +58,9 @@
 </template>
 <script lang="">
 import Vue from "vue";
-import Swiper from "swiper";
-// import '../../../../../../node_modules/swiper/css/swiper.min.css'
 import { mapState, mapActions } from "vuex";
+import Swiper from 'swiper';
+import 'swiper/dist/css/swiper.min.css';
 
 export default Vue.extend({
   data() {
