@@ -4,7 +4,7 @@
  * @Author: sueRimn
  * @Date: 2019-09-24 20:23:33
  * @LastEditors: sueRimn
- * @LastEditTime: 2019-09-26 11:46:38
+ * @LastEditTime: 2019-09-29 07:53:14
  -->
 <template>
   <div class="wrap">
@@ -21,7 +21,7 @@
           id="swiper-content-slide"
           class="swiper-slide"
         >
-          <img :src="item.img_url" alt="no" />
+          <img v-lazy="item.img_url" alt="no" />
         </swiper-slide>
         <div
           class="swiper-pagination"
@@ -84,7 +84,7 @@
           :key="item.id"
           @click="jumpDetailClick(item.id)"
         >
-          <img :src="item.list_pic_url" />
+          <img v-lazy="item.list_pic_url" />
           <div class="produckName" v-text="item.name"></div>
           <div class="price">￥{{item.retail_price}}</div>
         </li>

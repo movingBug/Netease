@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-09-23 19:43:48
- * @LastEditTime: 2019-09-28 17:26:18
+ * @LastEditTime: 2019-09-29 08:30:35
  * @LastEditors: sueRimn
  */
 import {
@@ -10,7 +10,7 @@ import {
   getindex,
   getanother,
   Getclass,
-  getgoods,
+  getGoods,
   getgoodsdetail,
   gethotsearch,
   getfinddata
@@ -91,7 +91,12 @@ const actions = {
   },
 
   async getgoods(context: any, id: any) {
-    const result = await getgoods(id);
+   let params= {
+      categoryId: String(id.id),
+      page: 1,
+      size: 10
+  }
+    const result = await getGoods(params);
     console.log(result);
     context.commit('setgoods', { goods: result.data.goodsList });
   },
@@ -99,13 +104,6 @@ const actions = {
   async getgoodsdetail(context: any, id: any) {
     const result = await getgoodsdetail(id);
     context.commit('setdatail', { gooddetail: result.data });
-
-    // await getgoodsdetail(id).then(res => {
-    //   if (res.data.errno === 0) {
-    //     console.log(res.data.data)
-    //     context.commit('setdatail', { gooddetail: res.data.data })
-    //   }
-    // })
   },
   async gethotsearch(context: any, val: any) {
     const result = await gethotsearch();

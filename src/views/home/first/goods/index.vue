@@ -22,8 +22,8 @@
 <script>
 import Vue from "vue";
 import { mapState, mapMutations, mapActions } from "vuex";
-import Swiper from "../../../../components/swiper/index.vue";
-import Header from "../../../../components/header/index"
+import Swiper from "@/components/swiper/index.vue";
+import Header from "@/components/header/index"
 
 export default {
   props: {},

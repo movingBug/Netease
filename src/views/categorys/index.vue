@@ -1,3 +1,11 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: sueRimn
+ * @Date: 2019-09-28 17:15:54
+ * @LastEditors: sueRimn
+ * @LastEditTime: 2019-09-29 07:50:14
+ -->
 <template>
   <div class="categoryPage">
     <div class="cateHeader">
@@ -30,7 +38,7 @@
             @click="e=>goodsJurp(val.id)"
           >
             <div class="listItemImg">
-              <img class="imgLazyload loadEnd" :src="val.list_pic_url" alt="imgLazyLoad" />
+              <img class="imgLazyload loadEnd" v-lazy="val.list_pic_url" alt="imgLazyLoad" />
             </div>
             <div class="goodsListName">{{val.name}}</div>
             <div class="goodsListPrice">￥{{val.retail_price}}</div>
@@ -93,7 +101,7 @@ export default {
     },
 
     goodsJurp(id) {
-      this.$router.push(`/goods/${id}`);
+      this.$router.push(`/productDetails/${id}`);
     }
   },
 

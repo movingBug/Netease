@@ -1,3 +1,11 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: sueRimn
+ * @Date: 2019-09-28 17:15:54
+ * @LastEditors: sueRimn
+ * @LastEditTime: 2019-09-28 17:15:54
+ -->
 <template>
   <div class="TopicPage">
     <Header :data="topicData" />
@@ -27,7 +35,7 @@
         <div class="relateTopicItem" v-for="item in relate" :key="item.id">
           <img
             class="imgLazyload loadEnd"
-            :src="item.scene_pic_url"
+            v-lazy="item.scene_pic_url"
             alt="imgLazyLoad"
           />
           <div>{{item.title}}</div>

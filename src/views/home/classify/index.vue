@@ -2,8 +2,8 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-09-23 14:42:20
- * @LastEditTime: 2019-09-27 15:11:31
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2019-09-29 07:50:25
+ * @LastEditors: sueRimn
  -->
 <template>
   <div class='classify'>
@@ -25,7 +25,7 @@
           <div>
             <!-- 头部图片 -->
            <div class='headimg' v-if="product">
-           <div><img :src="product.img_url" alt=""></div>
+           <div><img v-lazy="product.img_url" alt=""></div>
            </div>
            <!-- 标题 -->
             <h3>---{{product.name}}----</h3>

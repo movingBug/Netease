@@ -1,9 +1,17 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: sueRimn
+ * @Date: 2019-09-28 17:15:54
+ * @LastEditors: sueRimn
+ * @LastEditTime: 2019-09-28 17:15:54
+ -->
 <template>
   <div class="brandPage">
     <Header :data="brand"/>
     <div class="brandMain">
       <div class="brandDetail">
-        <img class="imgLazyload loadEnd" :src="brand.list_pic_url" alt="imgLazyLoad" />
+        <img class="imgLazyload loadEnd" v-lazy="brand.list_pic_url" alt="imgLazyLoad" />
         <div class="breadDesc">{{brand.simple_desc}}</div>
       </div>
 
@@ -18,7 +26,7 @@
             :key="val.id"
           >
             <div class="brandItemImg">
-              <img class="imgLazyload loadEnd" :src="val.list_pic_url" alt="imgLazyLoad" />
+              <img class="imgLazyload loadEnd" v-lazy="val.list_pic_url" alt="imgLazyLoad" />
             </div>
             <div class="brandItemName">{{val.name}}</div>
             <div class="brandItemPrice">￥{{val.retail_price}}</div>

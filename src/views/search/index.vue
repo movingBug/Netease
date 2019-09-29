@@ -2,8 +2,8 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-09-23 16:25:47
- * @LastEditTime: 2019-09-26 09:53:31
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2019-09-29 07:54:06
+ * @LastEditors: sueRimn
  -->
 <template>
   <div class='goodsearch'>
@@ -29,7 +29,7 @@
        </p>
        <div>
  <div v-for='(item,index) in searchlist' :key='index'>
-          <img :src='item.list_pic_url'/>
+          <img v-lazy='item.list_pic_url'/>
           <p>{{item.name}}</p>
           <p :style="{color:'red'}">价格:{{item.retail_price}}</p>
         </div>

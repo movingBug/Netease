@@ -4,7 +4,7 @@
  * @Author: sueRimn
  * @Date: 2019-09-24 09:53:47
  * @LastEditors: sueRimn
- * @LastEditTime: 2019-09-26 19:29:06
+ * @LastEditTime: 2019-09-29 07:52:56
  -->
 <template>
   <div class="wrap">
@@ -23,7 +23,7 @@
           @click="jumpClick(item.value_id)"
         >
           <div class="collectItem">
-            <img :src="item.list_pic_url" />
+            <img v-lazy="item.list_pic_url" />
             <div class="content">
               <div v-text="item.name" class="productName"></div>
               <div v-text="item.goods_brief" class="brief"></div>
@@ -38,7 +38,7 @@
           @touchend="e=>{touchEnd(e,item.retail_price)}"
         >
           <div class="collectItem">
-            <img :src="item.list_pic_url" />
+            <img v-lazy="item.list_pic_url" />
             <div class="content">
               <div v-text="item.name" class="productName"></div>
               <div v-text="item.goods_brief" class="brief"></div>

@@ -1,9 +1,17 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: sueRimn
+ * @Date: 2019-09-28 17:15:54
+ * @LastEditors: sueRimn
+ * @LastEditTime: 2019-09-29 07:54:15
+ -->
 <template>
   <div class="wrap">
     <div class="list">
         <dl v-for="item in imgData" :key="item.id" :cont="item" @click="getDatadetail(item.id)">
           <dt>
-            <img :src="item.scene_pic_url" alt=""/>
+            <img v-lazy="item.scene_pic_url" alt=""/>
           </dt>
           <dd>
             <h4>{{item.title}}</h4>
@@ -17,8 +25,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import {getData} from '@/api/index'
-console.log(getData)
+import {getData} from '@/api/index';
 export default Vue.extend({
   name: 'Special',
   components: {

@@ -2,8 +2,8 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-09-24 11:49:23
- * @LastEditTime: 2019-09-27 15:16:41
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2019-09-29 08:21:59
+ * @LastEditors: sueRimn
  -->
 <template>
   <div class="probox">
@@ -12,7 +12,7 @@
     <ly-tab v-model="selectedId" :items="arr" :options="options" @change="()=>change()"></ly-tab>
     <div class='product'>
    <dl v-for='item in goods' :key='item.id' @click="()=>togooddatail(item.id)">
-         <dt><img :src="item.list_pic_url" alt=""></dt>
+         <dt><img v-lazy="item.list_pic_url" alt=""></dt>
          <dd>{{item.name}}</dd>
      </dl>
     </div>
@@ -22,7 +22,7 @@
 import Vue from "vue";
 import { mapState, mapMutations, mapActions } from "vuex";
 import LyTab from "ly-tab";
-import Scrollrefesh from "@/components/scrollrefuch";
+// import Scrollrefesh from "@/components/scrollrefuch";
 
 Vue.use(LyTab);
 export default Vue.extend({
@@ -35,7 +35,7 @@ export default Vue.extend({
     };
   },
   components: {
-     Scrollrefesh
+    //  Scrollrefesh
   },
   computed: {
     ...mapState({

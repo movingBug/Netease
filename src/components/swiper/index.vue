@@ -4,13 +4,13 @@
  * @Author: sueRimn
  * @Date: 2019-09-27 15:10:34
  * @LastEditors: sueRimn
- * @LastEditTime: 2019-09-28 17:16:55
+ * @LastEditTime: 2019-09-29 07:49:42
  -->
 <template>
   <swiper :options="options" class="swiper-wrap" ref="mySwiper" v-if="list.length!=0">
     <swiper-slide v-for="(item,index) in list" :key="index" class="swiper-container">
-      <img v-if="item.image_url" :src="item.image_url" alt />
-      <img v-if="item.img_url" :src="item.img_url" alt="loadding" />
+      <img v-if="item.image_url" v-lazy="item.image_url" alt />
+      <img v-if="item.img_url" v-lazy="item.img_url" alt="loadding" />
     </swiper-slide>
     <!-- 常见的小圆点 -->
     <div class="swiper-pagination" v-for="(item,index) in list" :key="index" slot="pagination"></div>

@@ -1,3 +1,11 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: sueRimn
+ * @Date: 2019-09-28 17:15:54
+ * @LastEditors: sueRimn
+ * @LastEditTime: 2019-09-29 07:52:29
+ -->
 <template>
   <div class="firstPage">
     <Swiper :options="swiperOption" :list="lists" />
@@ -5,7 +13,7 @@
       <ul class="ulList" v-if="channel">
         <li v-for="(item) in channel" :key="item.id" @click="e=>ToDetail(item.id)">
           <span>
-            <img :src="item.icon_url" alt />
+            <img v-lazy="item.icon_url" alt />
           </span>
           <span>{{item.name}}</span>
         </li>
@@ -22,7 +30,7 @@
         >
           <div class="brandItemName">{{item.name}}</div>
           <div class="brandItemMinPrice">{{item.floor_price}}元起</div>
-          <img class="imgLazyload loadEnd" :src="item.new_pic_url" alt="imgLazyLoad" />
+          <img class="imgLazyload loadEnd" v-lazy="item.new_pic_url" alt="imgLazyLoad" />
         </router-link>
       </div>
     </div>
@@ -31,7 +39,7 @@
       <div class="newGoodsWrap" v-if="newGoodsList">
         <!-- 这个需要改跳路由的 -->
         <router-link class="newGoodsItem" :to="'/productDetails/'+item.id"   v-for="(item) in newGoodsList" :key="item.id">
-          <img class="imgLazyload loadEnd" :src="item.list_pic_url" alt="imgLazyLoad" />
+          <img class="imgLazyload loadEnd" v-lazy="item.list_pic_url" alt="imgLazyLoad" />
           <div class="newGoodsName">{{item.name}}</div>
           <div class="newGoodsPrice">￥{{item.retail_price}}</div>
         </router-link>
@@ -41,7 +49,7 @@
       <div class="hotGoodsTitle">人气推荐</div>
       <div class="hotGoodsWrap" v-if="hotGoodsList">
         <router-link class="hotGoodsItem" :to="'/productDetails/'+item.id" v-for="(item) in hotGoodsList" :key="item.id">
-          <img class="imgLazyload loadEnd" :src="item.list_pic_url" alt="imgLazyLoad" />
+          <img class="imgLazyload loadEnd" v-lazy="item.list_pic_url" alt="imgLazyLoad" />
           <div class="hotGoodsInfos">
             <div class="hotGoodsName">{{item.name}}</div>
             <div class="hotGoodsInfo">{{item.goods_brief}}</div>
@@ -61,7 +69,7 @@
         >
           <swiper-slide v-for="(item) in topicList" :key="item.id" id="swiper-content-slide">
             <router-link :to="'/topicDetail/'+item.id" class="topGoodItem">
-              <img :src="item.item_pic_url" alt="no" />
+              <img v-lazy="item.item_pic_url" alt="no" />
               <div class="topGoodSubTitle">
                 {{item.title}}
                 <span class="topGoodPrice">￥{{item.price_info}}元起</span>
@@ -84,7 +92,7 @@
             :key="val.id"
           >
             <div class="goodsItemImg">
-              <img class="imgLazyload loadEnd" :src="val.list_pic_url" alt="imgLazyLoad" />
+              <img class="imgLazyload loadEnd" v-lazy="val.list_pic_url" alt="imgLazyLoad" />
             </div>
             <div class="goodsItemName">{{val.name}}</div>
             <div class="goodsItemPrice">￥{{val.retail_price}}</div>

@@ -4,7 +4,7 @@
  * @Author: sueRimn
  * @Date: 2019-09-26 15:35:40
  * @LastEditors: sueRimn
- * @LastEditTime: 2019-09-27 11:57:58
+ * @LastEditTime: 2019-09-29 07:48:57
  -->
 <template>
   <div class="wrap">
@@ -37,7 +37,7 @@
           />
         </div>
         <div class="contentCenter">
-          <img :src="item.list_pic_url" />
+          <img v-lazy="item.list_pic_url" />
         </div>
         <div v-if="!signPattern">
           <div class="cont">

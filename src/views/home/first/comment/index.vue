@@ -1,3 +1,11 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: sueRimn
+ * @Date: 2019-09-28 17:15:54
+ * @LastEditors: sueRimn
+ * @LastEditTime: 2019-09-28 17:15:54
+ -->
 <template>
   <div class="commentPage">
     <Header :data="data" />
@@ -16,7 +24,7 @@
   </div>
 </template>
 <script>
-import Header from "../../../../components/header/index.vue";
+import Header from "@/components/header/index.vue";
 import { mapState, mapMutations, mapActions } from "vuex";
 
 export default {

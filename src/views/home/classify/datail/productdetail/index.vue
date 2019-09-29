@@ -2,8 +2,8 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-09-24 19:27:11
- * @LastEditTime: 2019-09-26 20:27:38
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2019-09-29 07:50:46
+ * @LastEditors: sueRimn
  -->
 <template>
   <div class="product">
@@ -15,7 +15,7 @@
       <div class="swiper-container">
         <div class="swiper-wrapper">
           <div class="swiper-slide" v-for="item in gooddetail.gallery" :key="item.id">
-            <img :src="item.img_url" alt />
+            <img v-lazy="item.img_url" alt />
           </div>
         </div>
         <!-- 如果需要分页器 -->
@@ -31,10 +31,10 @@
         </div>
       </div>
       <div v-if="gooddetail.info">
-        <img :src="gooddetail.info.primary_pic_url" alt />
+        <img v-lazy="gooddetail.info.primary_pic_url" alt />
       </div>
       <div v-if="gooddetail.info">
-        <img :src="gooddetail.info.list_pic_url" alt />
+        <img v-lazy="gooddetail.info.list_pic_url" alt />
       </div>
 
       <!-- 遮罩层 -->

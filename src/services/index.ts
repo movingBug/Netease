@@ -4,7 +4,7 @@
  * @Author: sueRimn
  * @Date: 2019-09-23 15:56:55
  * @LastEditors: sueRimn
- * @LastEditTime: 2019-09-28 19:01:37
+ * @LastEditTime: 2019-09-29 08:30:43
  */
 import request from '../utils/request';
 
@@ -140,13 +140,9 @@ export function Getclass(params: any) {
     })
 }
 
-export function getgoods(params: any) {
+export function getGoods(params: any) {
     return request.get('/goods/list', {
-        params: {
-            categoryId: params.id,
-            page: 1,
-            size: 10
-        }
+        params
     })
 }
 

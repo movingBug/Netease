@@ -4,7 +4,7 @@
  * @Author: sueRimn
  * @Date: 2019-09-24 09:53:47
  * @LastEditors: sueRimn
- * @LastEditTime: 2019-09-28 16:59:59
+ * @LastEditTime: 2019-09-29 07:47:38
  -->
 <template>
   <div class="wrap">
@@ -24,7 +24,7 @@
       </div>
       <div class="setDefault">
         设置为默认地址
-        <img :src="imgsrc" @click="imgClick" />
+        <img v-lazy="imgsrc" @click="imgClick" />
       </div>
     </main>
     <footer>
